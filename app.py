@@ -1,6 +1,7 @@
+#!/bin/env python
 from flask import Flask
 app = Flask(__name__)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, port=3000)
