@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" enable-background="new" viewBox="0 0 33.057 30">
+  <defs>
+    <filter id="a" color-interpolation-filters="sRGB">
+      <feBlend in2="BackgroundImage" mode="darken"/>
+    </filter>
+  </defs>
+  <path fill="none" stroke="#fff" stroke-width="24" d="M-371.429-1047.318v-105.877H-30v341.429h-341.429v-105.877" filter="url(#a)" transform="translate(32.794 87.666) scale(.07421)"/>
+  <path fill="none" stroke="#000" stroke-width="20" d="M-371.429-917.643v-129.675" filter="url(#a)" transform="translate(32.794 87.666) scale(.07421)"/>
+  <path fill="#fff" d="M0 13.781h20.165v1.95H0z"/>
+  <path fill="#fff" d="M15.964 8.727l5.937 6.043-1.39 1.366-5.937-6.043z"/>
+  <path fill="#fff" d="M20.51 13.404l-5.937 6.043 1.39 1.366L21.9 14.77z"/>
+</svg>

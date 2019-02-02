@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- ELEMENT-2 REPEATED ON ALL PAGES -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link href="/assets/css/bulma.css" rel="stylesheet">
+    <!-- END OF ELEMENT-2 -->
+
+    <!-- ELEMENT 7 -->
+    <link href="/assets/css/custom-edit.css" rel="stylesheet">
+    <!-- File Resize & Upload CSS -->
+    <link href="/assets/css/croppie.css" rel="stylesheet">
+    <!-- END OF ELEMENT 7 -->
+
+    <title>Blockchain | New Job</title>
+</head>
+
+<body>
+    <div class="bg hero hero-height">
+        <div class="hero-body"></div>
+    </div>
+
+    <!-- ELEMENT-8 -->
+    <form id="newJobForm" action="/user/confirmation.html" method="post">
+        <div class="container" style="z-index:1;">
+            <!-- ELEMENT 8a -->
+            <div class="columns is-centered is-mobile">
+                <div class="column is-10-mobile is-11-tablet is-10-desktop page container-overlay">
+                    <div class="columns is-centered">
+                        <div class="column is-12-desktop">
+                            <div class="page-inner transition-fade">
+                                <div class="columns is-multiline">
+                                    <div class="column is-12">
+                                        <h2>JOB DETAILS</h2>
+                                    </div>
+                                    <div class="column is-4">
+                                        <h3 class="label is-hidden-mobile">JOB TITLE</h3>
+                                        <input id="titleInput" name="title" class="input is-medium-desktop" type="text" placeholder="Job Title">
+                                        <span id="titleInputHelp" class="help is-danger is-hidden">Please enter a title</span>
+                                    </div>
+                                    <div class="column is-4">
+                                        <h3 class="label is-hidden-mobile">JOB LOCATION</h3>
+                                        <input id="jobLocationInput" name="job_location" class="input" type="text" placeholder="Job Location">
+                                        <span id="jobLocationInputHelp" class="help is-danger is-hidden">Please enter a job location</span>
+                                    </div>
+                                    <div class="column is-4">
+                                        <h3 class="label is-hidden-mobile">JOB TYPE</h3>
+                                        <div class="select is-full-width">
+                                            <select name="job_status" class="is-full-width">
+                                                <option>Full-time</option>
+                                                <option>Part-time</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="column is-12">
+                                        <h3 class="label is-hidden-mobile">JOB DESCRIPTION</h3>
+                                        <textarea id="descriptionInput" name="description" class="textarea" rows="10" placeholder="Job Description"></textarea>
+                                        <span id="descriptionInputHelp" class="help is-danger is-hidden">Please enter a job description</span>
+                                    </div>
+                                    <div class="column is-12">
+                                        <h3 class="label is-hidden-mobile">LINK TO APPLY</h3>
+                                        <input id="applyLinkInput" name="application_url" class="input" type="text" placeholder="Link to apply">
+                                        <span id="applyLinkInputHelp" class="help is-danger is-hidden">Must begin with http:// or www.</span>
+                                    </div>
+                                    <div class="column is-12 page-spacer">
+                                        <h2>COMPANY DETAILS</h2>
+                                    </div>
+                                    <div class="column is-3">
+                                        <h3 class="label is-hidden-mobile">COMPANY NAME</h3>
+                                        <input id="companyInput" name="company_name" class="input is-normal" type="text" placeholder="Company Name">
+                                        <span id="companyInputHelp" class="help is-danger is-hidden">Please enter your company name</span>
+                                    </div>
+                                    <div class="column is-3">
+                                        <h3 class="label is-hidden-mobile">COMPANY LOCATION</h3>
+                                        <input id="locationInput" name="company_location" class="input" type="text" placeholder="Company Location">
+                                        <span id="locationInputHelp" class="help is-danger is-hidden">Please enter the job location</span>
+                                    </div>
+                                    <div class="column is-3 column-logo">
+                                        <div class="columns"></div>
+                                        <h3 class="label is-hidden-mobile">COMPANY LOGO</h3>
+                                        <div class="file button is-info is-full-width">
+                                            <label class="file-label">
+                                                <input id="companyLogo" class="file-input" type="file">
+                                                <span class="file-cta">
+                                                    <span class="file-label">
+                                                        Choose a file…
+                                                    </span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <span id="logoInputHelp" class="help is-danger is-hidden">Please upload your logo</span>
+                                    </div>
+                                    <div id="croppie" class="column is-3 is-hidden">
+                                        <input type="hidden" id="imagebase64" name="company_logo">
+                                    </div>
+                                    <div class="column is-12">
+                                        <h3 class="label is-hidden-mobile">COMPANY WEBSITE</h3>
+                                        <input id="websiteInput" name="company_url" class="input" type="text" placeholder="Company Website">
+                                        <span id="websiteInputHelp" class="help is-danger is-hidden">Please enter your website</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END OF ELEMENT 8a -->
+            <!-- UNIQUE PAYMENT -->
+            <div class="container payment-section">
+                <div class="columns is-centered is-mobile">
+                    <div class="column is-10-mobile is-11-tablet is-10-desktop page">
+                        <div class="columns is-centered">
+                            <div class="column is-12-desktop">
+                                <div class="page-inner">
+                                    <div class="columns is-multiline">
+                                        <div class="column is-12-mobile is-12-tablet">
+                                            <h2>PAYMENT DETAILS</h2>
+                                        </div>
+                                        <div class="column is-12-mobile is-12-tablet">
+                                            <h3 class="price">1 JOB POSTING - $200</h3>
+                                        </div>
+                                        <div class="column is-12-mobile is-12-tablet">
+                                            <input type="radio" name="payment_type" value="CC" checked="checked">
+                                            <img class="payment-logo" src="/assets/img/mastercard_logo.png" />
+                                            <img class="payment-logo" src="/assets/img/visa_logo.png" />
+                                            <span class="payment-text">Credit & Debit Cards</span>
+                                        </div>
+
+                                        <div id="CC" class="columns">
+                                            <div class="column is-12-mobile is-3-tablet">
+                                                <h3 class="label">CARD NUMBER</h3>
+                                                <input id="ccNumInput" name="cc_number" class="input is-medium-desktop" type="text" placeholder="xxxx-xxxx-xxxx-xxxx">
+                                                <span id="ccNumInputHelp" class="help is-danger is-hidden">Invalid Card Number</span>
+                                            </div>
+                                            <div class="column is-12-mobile is-3-tablet is-4-widescreen">
+                                                <h3 class="label">CARD HOLDER'S NAME</h3>
+                                                <input id="ccNameInput" name="cc_name" class="input" type="text" placeholder="Full Name">
+                                                <span id="ccNameInputHelp" class="help is-danger is-hidden">Please enter the name</span>
+                                            </div>
+                                            <div class="column is-12-mobile is-4-tablet is-multiline">
+                                                <h3 class="label">EXPIRY DATE</h3>
+                                                <div class="select is-exp-width inline">
+                                                    <select id="ccMonthInput" name="cc_month" class="is-full-width">
+                                                        <option disabled selected>Month</option>
+                                                        <option>01</option>
+                                                        <option>02</option>
+                                                        <option>03</option>
+                                                        <option>04</option>
+                                                        <option>05</option>
+                                                        <option>06</option>
+                                                        <option>07</option>
+                                                        <option>08</option>
+                                                        <option>09</option>
+                                                        <option>10</option>
+                                                        <option>11</option>
+                                                        <option>12</option>
+                                                    </select>
+                                                    <span id="ccMonthInputHelp" class="help is-danger is-hidden">Select month</span>
+                                                </div>
+
+                                                <div class="select inline is-exp-width">
+                                                    <select id="ccYearInput" name="cc_year" class="is-full-width">
+                                                        <option disabled selected>Year</option>
+                                                    </select>
+                                                    <span id="ccYearInputHelp" class="help is-danger is-hidden">Select Year</span>
+                                                </div>
+
+                                            </div>
+                                            <div class="column is-3-mobile is-2-tablet">
+                                                <h3 class="label">CCV</h3>
+                                                <input id="ccvInput" name="cc_ccv" class="input is-medium-desktop" type="text" placeholder="CCV">
+                                                <span id="ccvInputHelp" class="help is-danger is-hidden">Invalid CCV</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="column is-12-mobile is-12-tablet">
+                                            <input type="radio" name="payment_type" value="Paypal">
+                                            <img class="payment-logo" src="/assets/img/paypal_logo.png" />
+                                        </div>
+                                        <div class="column is-12 page-button-group"></div>
+                                        <div class="column is-12-mobile is-4-tablet mobile-button-payment">
+                                            <input type="submit" class="button is-info is-full-width button-post" value="MAKE PAYMENT">
+                                        </div>
+                                        <div class="column is-2">
+                                            <a href="/user" class="button is-outlined is-danger is-full-width has-no-border">CANCEL</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END OF UNIQUE PAYMENT -->
+        </div>
+    </form>
+    <!-- END OF ELEMENT-8 -->
+
+    <!-- ELEMENT-10 FOOTER SECTION STARTS HERE -->
+    <section class="bg hero footer ">
+        <div class="hero-head ">
+            <div class="container has-text-centered ">
+                <img src="/assets/img/blockchain_logo.png ">
+            </div>
+        </div>
+    </section>
+    <!-- END OF ELEMENT-10 -->
+
+    <!-- jQuery -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <!-- Credit Card Validation -->
+    <script src="/assets/js/payform.min.js"></script>
+    <!-- MarkDown -->
+    <script src="/assets/js/marked.min.js"></script>
+    <!-- File Resize & Upload Script -->
+    <script src="/assets/js/croppie.min.js"></script>
+    <!-- Custom Functions -->
+    <script src="/assets/js/functions.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<mjml no-responsive="true">
+  <mj-head>
+    <mj-attributes>
+      <mj-all padding="26px" />
+      <mj-font name="BebasNeue" href="https://healthforce-9d8bf.firebaseapp.com/assets/fonts/BebasNeue%20Bold.ttf" />
+    </mj-attributes>
+    <mj-style>
+      .top-container { height:200px } .img-align { display:inline-block; }
+    </mj-style>
+  </mj-head>
+  <mj-body>
+
+    <mj-container background-color="#fff">
+      <mj-section css-class="top-container" background-url="https://healthforce-9d8bf.firebaseapp.com/assets/img/blockchain_bg.jpg" background-color="#1e3d7a">
+        <mj-column>
+          <mj-table align="center" padding="50 0">
+            <tr>
+              <td>
+                <img align="left" padding="0px 0px 0px 10px" href="https://healthforce-9d8bf.firebaseapp.com/" width="150px" src="https://healthforce-9d8bf.firebaseapp.com/assets/img/blockchain_logo.png"></mj-image>
+              </td>
+              <td style="font-family:Bebas; font-weight:700; font-size:20px; color:#fff;text-align:right">
+                FEB 9TH ISSUE
+              </td>
+            </tr>
+          </mj-table>
+        </mj-column>
+      </mj-section>
+
+
+      <mj-section background-color="#f7f7f7" border-left="1px solid black" border-right="1px solid black">
+        <mj-column>
+          <mj-text align="center" font-family="BebasNeue" font-weight="700" font-size="30px" line-height="normal">
+            12 NEW BLOCKCHAIN JOBS FOR YOU
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      // JOB LOOP
+      <mj-wrapper background-color="#f7f7f7" border-left="1px solid black" border-right="1px solid black" padding-bottom="0px" padding-top="0">
+        <mj-section background-url="https://healthforce-9d8bf.firebaseapp.com/assets/img/email_logo_bg.png" padding-bottom="0" padding-top="0">
+          <mj-column width="100%">
+            <mj-image padding="0 0" width="100px" height="100px" src="https://healthforce-9d8bf.firebaseapp.com/assets/img/sample_logo.png"></mj-image>
+          </mj-column>
+        </mj-section>
+      </mj-wrapper>
+
+      <mj-wrapper background-color="#f7f7f7" border-left="1px solid black" border-right="1px solid black" padding-bottom="0px" padding-top="0px">
+        <mj-section background-color="#fff" padding-bottom="0" padding-top="0px">
+          <mj-column width="100%">
+            <mj-text align="center" font-family="Lato" font-weight="700" font-size="22px" line-height="normal">
+              Senior Etherium Developper
+            </mj-text>
+          </mj-column>
+        </mj-section>
+      </mj-wrapper>
+
+      <mj-wrapper padding-top="0px" background-color="#f7f7f7" border-left="1px solid black" border-right="1px solid black" padding-bottom="0px">
+        <mj-section padding="0 0">
+          <mj-column width="100%" background-color="#fff">
+            <mj-table width="100%" align="center" padding="0 1% 30px 1%">
+              <tr>
+                <td width="20%"></td>
+                <td style="padding: 10px 2%;">
+                  <img align="right" width="22px" height="22px" src="https://healthforce-9d8bf.firebaseapp.com/assets/img/blockchain_person.png" />
+                </td>
+                <td nowrap style="padding: 15px 5% 15px 1%; font-family:Lato; font-size:16px;">CoinBase</td>
+                <td style="padding: 15px 2%">
+                  <img align="right" width="22px" height="22px" src="https://healthforce-9d8bf.firebaseapp.com/assets/img/blockchain_briefcase.svg" />
+                </td>
+                <td nowrap style="padding: 15px 1%; font-family:Lato; font-size:16px;">Full-time</td>
+                <td width="20%"></td>
+              </tr>
+
+              <tr>
+                <td width="20%"></td>
+                <td style="padding: 15px 2%">
+                  <img align="right" width="16px" height="16px" src="https://healthforce-9d8bf.firebaseapp.com/assets/img/blockchain_location.svg" /></td>
+                <td nowrap style="padding: 15px 5% 15px 1%; font-family:Lato; font-size:16px;">New York</td>
+                <td style="padding: 15px 2%">
+                  <img align="right" width="22px" height="22px" src="https://healthforce-9d8bf.firebaseapp.com/assets/img/blockchain_clock.svg" />
+                </td>
+                <td nowrap style="padding: 15px 1%; font-family:Lato; font-size:16px;">2hrs ago</td>
+                <td width="20%"></td>
+              </tr>
+            </mj-table>
+          </mj-column>
+        </mj-section>
+      </mj-wrapper>
+      <mj-wrapper padding-top="0px" padding-bottom="60px" background-color="#f7f7f7" border-left="1px solid black" border-right="1px solid black">
+        <mj-section background-color="#36a1ff" padding="0px 0">
+          <mj-column width="100%">
+            <mj-button width="100%" padding="12px 0" font-family="Bebas" font-weight="700" font-size="24px" line-height="normal" background-color="" color="white" href="/">
+              APPLY NOW
+            </mj-button>
+          </mj-column>
+        </mj-section>
+      </mj-wrapper>
+      // END OF JOB LOOP
+
+      <mj-hero mode="fluid-height" background-url="https://healthforce-9d8bf.firebaseapp.com/assets/img/blockchain_bg.jpg" background-color="#1e3d7a" padding="60px 0px 30px 0px">
+        <!-- To add content like mj-image, mj-text, mj-button ... use the mj-hero-content component -->
+        <mj-image href="https://healthforce-9d8bf.firebaseapp.com/" width="200px" src="https://healthforce-9d8bf.firebaseapp.com/assets/img/blockchain_logo.png"></mj-image>
+        <mj-hero-content width="100%">
+          <mj-text padding-top="0px" color="#ffffff" font-family="Bebas" align="center" font-size="22" line-height="40px">
+            Find blockchain related jobs around the world.
+          </mj-text>
+          <mj-text padding-top="5px" color="#ffffff" font-family="Lato" font-size="14px" line-height="1.4px" letter-spacing="0.8" align="center">
+            <a href="https://healthforce-9d8bf.firebaseapp.com/login/?email=user@email.com&action=unsubscribe&token=678678">Unsubscribe</a>
+          </mj-text>
+        </mj-hero-content>
+      </mj-hero>
+    </mj-container>
+  </mj-body>
+</mjml>

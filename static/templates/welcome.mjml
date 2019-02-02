@@ -1,0 +1,43 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-all padding="26px" />
+      <mj-font name="Bebas" href="https://healthforce-9d8bf.firebaseapp.com/assets/fonts/BebasNeue%20Bold.ttf" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body>
+    <mj-container background-color="#fff">
+      <mj-hero mode="fluid-height" background-url="https://healthforce-9d8bf.firebaseapp.com/assets/img/blockchain_bg.jpg" background-color="#1e3d7a" padding="60px 0px 40px 0px">
+        <mj-image href="https://healthforce-9d8bf.firebaseapp.com/" width="200px" src="https://healthforce-9d8bf.firebaseapp.com/assets/img/blockchain_logo.png"></mj-image>
+        <mj-hero-content width="100%">
+          <mj-text padding="20px" color="#ffffff" font-family="Bebas" font-weight="700" align="center" font-size="36" line-height="45px">
+            WELCOME TO THE COMMUNITY!
+          </mj-text>
+        </mj-hero-content>
+      </mj-hero>
+      <mj-section background-color="#f7f7f7" border="1px solid black">
+        <mj-column>
+          <mj-text font-family="Lato" font-size="16px" line-height="2.36" letter-spacing="0.8" padding="0 0">
+            <p>Our vision is to bring more innovation, efficiency, and equality of opportunity to the world by building an open financial system. Our first step on that journey is making digital currency accessible and approachable for everyone. Two principles
+              guide our efforts. First, be the most trusted company in our domain. Second, create user-focused products that are easier and more delightful to use.</p>
+            <p> Moving and transacting financial assets safely is core to executing on our vision and building our brand of trust. The payments team builds shared infrastructure for Coinbase and GDAX to securely store and trade billion dollars of assets.
+              We take on hard engineering problems in cryptography, security, blockchain technology and distributed systems, with a focus on building high reliability services for product teams.</p>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-hero mode="fluid-height" background-url="https://healthforce-9d8bf.firebaseapp.com/assets/img/blockchain_bg.jpg" background-color="#1e3d7a" padding="60px 0px 40px 0px">
+        <!-- To add content like mj-image, mj-text, mj-button ... use the mj-hero-content component -->
+        <mj-image href="https://healthforce-9d8bf.firebaseapp.com/" width="200px" src="https://healthforce-9d8bf.firebaseapp.com/assets/img/blockchain_logo.png"></mj-image>
+        <mj-hero-content width="100%">
+          <mj-text padding-top="0px" color="#ffffff" font-family="Bebas" font-weight="700" align="center" font-size="24" line-height="40px">
+            Find blockchain related jobs around the world.
+          </mj-text>
+          <mj-text padding-top="5px" color="#ffffff" font-family="Lato" font-size="14px" line-height="2.36" letter-spacing="0.8" align="center">
+            <a href="https://healthforce-9d8bf.firebaseapp.com/login/?email=user@email.com&action=unsubscribe&token=678678">Unsubscribe</a>
+          </mj-text>
+        </mj-hero-content>
+      </mj-hero>
+    </mj-container>
+  </mj-body>
+</mjml>
