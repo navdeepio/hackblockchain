@@ -28,13 +28,18 @@ Create new user and log them in
 
 Show the job
 
-`POST` `/job/:id`
-
-Create the job
-
-`PUT` `/job/:id`
+`PATCH` `/job/:id`
 
 Update the job
+
+`GET` `/job/new`
+
+Show the create job form
+
+`POST` `/job/new`
+
+
+Create the job
 
 `GET` `/job/search`
 
