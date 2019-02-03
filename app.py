@@ -15,7 +15,7 @@ def index():
 @app.route('/user/login', methods=['GET', 'POST'])
 def user_login():
     if request.method == 'GET':
-        return render_template('login.html')
+        return render_template('login/sign-in.html')
     elif request.method == 'POST':
         print('login the user')
 
@@ -24,7 +24,7 @@ def user_login():
 @app.route('/user/new', methods=['GET', 'POST'])
 def create_user():
     if request.method == 'GET':
-        return render_template('signup.html')
+        return render_template('login/sign-up.html')
     elif request.method == 'POST':
         print('have to create the user now')
 

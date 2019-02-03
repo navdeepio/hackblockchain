@@ -11,14 +11,17 @@
     {% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
     <meta name="description" content="Find blockchain related jobs around the world.">
-    <title>Blockchain | Latest Jobs</title>
+    <title>Hackblockchain | Latest Jobs</title>
     {% endblock %}
 
 </head>
 
-<body class="transition-fade">
+<body>
   {% block body %}
   {% endblock %}
+
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/functions.js') }}"></script>
 </body>
 
 </html>
