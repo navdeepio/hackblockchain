@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- ELEMENT-2 REPEATED ON ALL PAGES -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}">
+    <!-- END OF ELEMENT-2 -->
+
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <meta name="description" content="Find blockchain related jobs around the world.">
+    <title>Blockchain | Latest Jobs</title>
+    {% endblock %}
+
+</head>
+
+<body class="transition-fade">
+  {% block body %}
+  {% endblock %}
+</body>
+
+</html>
