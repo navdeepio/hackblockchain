@@ -1,8 +1,38 @@
 #! /bin/env python
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
-load_dotenv()
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+import os
+
+if os.getenv('FLASK_ENV') == 'development':
+    load_dotenv()
+
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(100), unique=True, nullable=False)
+    jobs = db.relationship('Job', backref='user', lazy=True)
+    created_at = db.Column(db.DateTime, unique=True, nullable=False,
+                           default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, unique=True, nullable=False,
+                           default=datetime.utcnow)
+    # create a hook to update updated_at every time this is saved
+
+
+class Job(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(300), unique=True, nullable=False)
+    description = db.Column(db.Text, unique=True, nullable=False)
+    how_to_apply = db.Column(db.String(300), unique=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    # type of job, need an enum for that
 
 
 # homepage
@@ -78,4 +108,4 @@ def reset_password():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=3000)
+    app.run(port=os.getenv('PORT'))
