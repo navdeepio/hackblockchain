@@ -1,9 +1,12 @@
 #! /bin/env python
-from flask import Flask, render_template, request
+
+from flask import Flask, render_template, request, redirect, url_for
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
+from enum import Enum
+from flask_login import LoginManager, UserMixin, login_required, logout_user
 
 if os.getenv('FLASK_ENV') == 'development':
     load_dotenv()
@@ -11,19 +14,32 @@ if os.getenv('FLASK_ENV') == 'development':
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = b'\xbe\xcc/G"(|\x06R\x12x\xaf\x9b\n\xf4\xe5'
 db = SQLAlchemy(app)
 
+login_manager = LoginManager()
+login_manager.login_view = 'user_login'
+login_manager.init_app(app)
 
-class User(db.Model):
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
+
+
+class JobType(Enum):
+    contract = 'Contract'
+    full_time = 'Full Time'
+    part_time = 'Part Time'
+
+
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(100), unique=True, nullable=False)
     jobs = db.relationship('Job', backref='user', lazy=True)
     created_at = db.Column(db.DateTime, unique=True, nullable=False,
                            default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, unique=True, nullable=False,
-                           default=datetime.utcnow)
-    # create a hook to update updated_at every time this is saved
 
 
 class Job(db.Model):
@@ -32,7 +48,11 @@ class Job(db.Model):
     description = db.Column(db.Text, unique=True, nullable=False)
     how_to_apply = db.Column(db.String(300), unique=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    # type of job, need an enum for that
+    job_location = db.Column(db.String(100))
+    company_name = db.Column(db.String(100), nullable=False)
+    company_url = db.Column(db.String(300), nullable=False)
+    job_type = db.Column(db.Enum(JobType), nullable=False)
+    remote_ok = db.Column(db.Boolean, nullable=False, default=False)
 
 
 # homepage
@@ -60,25 +80,32 @@ def create_user():
 
 
 # show user dashboard
-@app.route('/user/<int:id>', methods=['GET'])
-def show_edit_user():
+@login_required
+@app.route('/user/me', methods=['GET'])
+def show_user():
     return render_template('dashboard.html')
 
 
-# Get or update an ad
-@app.route('/job/<int:id>', methods=['GET', 'PATCH'])
-def show_edit_job():
-    if (request.method == 'GET'):
-        ''' finds the particular job
-         and returns it in its own page
-         or edit the job
-        '''
-        return render_template('job.html')
-    elif (request.method == 'PATCH'):
-        return 'patched the request'
+# Get an ad
+@login_required
+@app.route('/job/<int:id>', methods=['GET'])
+def show_job():
+    ''' finds the particular job
+     and returns it in its own page
+     or edit the job
+    '''
+    return render_template('job.html')
+
+
+# update an ad
+@login_required
+@app.route('/job/<int:id>', methods=['PATCH'])
+def edit_job():
+    return 'patched the request'
 
 
 # create a job
+@login_required
 @app.route('/job/new', methods=['GET', 'POST'])
 def job_form_create():
     '''
@@ -91,8 +118,6 @@ def job_form_create():
     elif request.method == 'POST':
         # do something else
         print('created the job')
-    else:
-        return 'page not found'
 
 
 # search through the ads
@@ -104,7 +129,13 @@ def job_search():
 # reset user password
 @app.route('/user/resetpassword')
 def reset_password():
-    return 'the job search page'
+    return 'reset password page'
+
+
+@app.route('/user/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
