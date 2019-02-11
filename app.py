@@ -1,13 +1,15 @@
 #! /bin/env python
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
 from enum import Enum
-from flask_login import LoginManager, UserMixin, login_required, logout_user
+from flask_login import LoginManager, UserMixin, login_required, logout_user, \
+    login_user
 from forms import LoginForm, RegistrationForm
+from werkzeug.security import generate_password_hash, check_password_hash
 
 if os.getenv('FLASK_ENV') == 'development':
     load_dotenv()
@@ -23,14 +25,13 @@ login_manager.login_view = 'user_login'
 login_manager.init_app(app)
 
 
-# mandatory login manager callback
+# login manager callback
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
 
 # Models begin
-
 
 class JobType(Enum):
     contract = 'Contract'
@@ -69,27 +70,43 @@ def index():
 # login user
 @app.route('/user/login', methods=['GET', 'POST'])
 def user_login():
-    if request.method == 'GET':
-        form = LoginForm()
-        return render_template('login/sign-in.html', form=form)
-    elif request.method == 'POST':
-        print('login the user')
+    form = LoginForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        password = form.password.data
+        user = User.query.filter(email=email).first()
+        if user and check_password_hash(user.password, password):
+            login_user(user)
+            redirect(url_for('dashboard'))
+        else:
+            flash('Invalid email/password combination.')
+            redirect(url_for('user_login'))
+    # have to add errors here
+    return render_template('login/sign-in.html', form=form)
 
 
 # create user
 @app.route('/user/new', methods=['GET', 'POST'])
 def create_user():
-    if request.method == 'GET':
-        form = RegistrationForm()
-        return render_template('login/sign-up.html', form=form)
-    elif request.method == 'POST':
-        print('have to create the user now')
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        password = form.password.data
+        user = User(email, generate_password_hash(password))
+        db.session.add(user)
+        db.session.commit()
+        # log in , user
+        login_user(user)
+        return redirect(url_for('dashboard'))
+    # the dashboard should have a create job button
+    # form did not validate
+    return render_template('login/sign-up.html', form=form)
 
 
 # show user dashboard
 @login_required
-@app.route('/user/me', methods=['GET'])
-def show_user():
+@app.route('/user/dashboard', methods=['GET'])
+def dashboard():
     return render_template('dashboard.html')
 
 
