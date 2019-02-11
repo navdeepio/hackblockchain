@@ -7,6 +7,7 @@ from datetime import datetime
 import os
 from enum import Enum
 from flask_login import LoginManager, UserMixin, login_required, logout_user
+from forms import LoginForm, RegistrationForm
 
 if os.getenv('FLASK_ENV') == 'development':
     load_dotenv()
@@ -14,7 +15,7 @@ if os.getenv('FLASK_ENV') == 'development':
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = b'\xbe\xcc/G"(|\x06R\x12x\xaf\x9b\n\xf4\xe5'
+app.config['SECRET_KEY'] = 'so92_4$lor1123sor'
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()
@@ -22,9 +23,13 @@ login_manager.login_view = 'user_login'
 login_manager.init_app(app)
 
 
+# mandatory login manager callback
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
+
+
+# Models begin
 
 
 class JobType(Enum):
@@ -46,7 +51,7 @@ class Job(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(300), unique=True, nullable=False)
     description = db.Column(db.Text, unique=True, nullable=False)
-    how_to_apply = db.Column(db.String(300), unique=True, nullable=False)
+    link_to_apply = db.Column(db.String(300), unique=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     job_location = db.Column(db.String(100))
     company_name = db.Column(db.String(100), nullable=False)
@@ -65,7 +70,8 @@ def index():
 @app.route('/user/login', methods=['GET', 'POST'])
 def user_login():
     if request.method == 'GET':
-        return render_template('login/sign-in.html')
+        form = LoginForm()
+        return render_template('login/sign-in.html', form=form)
     elif request.method == 'POST':
         print('login the user')
 
@@ -74,7 +80,8 @@ def user_login():
 @app.route('/user/new', methods=['GET', 'POST'])
 def create_user():
     if request.method == 'GET':
-        return render_template('login/sign-up.html')
+        form = RegistrationForm()
+        return render_template('login/sign-up.html', form=form)
     elif request.method == 'POST':
         print('have to create the user now')
 
@@ -123,6 +130,9 @@ def job_form_create():
 # search through the ads
 @app.route('/job/search')
 def job_search():
+    '''
+    work to be done here
+    '''
     return 'done'
 
 

@@ -11,8 +11,8 @@
                     filename='img/blockchain_logo.png') }}">
                 </div>
                 <div class="column is-mobile-2 has-text-right">
-                    <a href="/login/sign-in.html" class="button is-outlined hero-button is-hidden-mobile" style="margin-right:24px;">SIGN-IN</a>
-                    <a href="/login/sign-in.html" class="is-hidden-tablet" style="margin-right:24px;">
+                    <a href="/user/login" class="button is-outlined hero-button is-hidden-mobile" style="margin-right:24px;">SIGN-IN</a>
+                    <a href="/user/login" class="is-hidden-tablet" style="margin-right:24px;">
                       <img src="{{ url_for('static',
                       filename='img/login_white.png') }}" alt="sign-in" style="height:30px; width:30px; opacity:0.8">
                     </a>
@@ -40,7 +40,7 @@
     </div>
     <div class="hero-foot">
         <div class="container has-text-centered">
-            <a href="/user/new.html" class="button is-outlined hero-button">POST A JOB</a>
+            <a href="/job/new" class="button is-outlined hero-button">POST A JOB</a>
             <br>
             <span class="down-arrow">&darr;</span>
         </div>
@@ -128,7 +128,8 @@
                 </div>
                 <div id="emailSection" class="column is-8 has-text-left email-input-section">
                     <p class="control has-icons-left has-icons-right">
-                        <input id="emailInput" class="input email-input" type="email" placeholder="YourName@email.com" />
+                        <input id="emailInput" class="input email-input"
+                        type="email" placeholder="email@example.com" />
                         <p id="emailInputHelp" class="help is-danger is-hidden">This email is invalid</p>
                     </p>
                 </div>

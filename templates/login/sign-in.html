@@ -8,7 +8,7 @@
 
 {% block body %}
 <!-- ELEMENT 5 SHARED WITH SIGN-UP.HTML// FORM ID IS UNIQUE-->
-<form id="signInForm" action="/user/" method="post">
+<form id="signInForm" action="{{ url_for('form') }}" method="post">
     <section class="bg hero is-fullheight">
         <div class="hero-body">
             <div class="container pop-up">
@@ -17,14 +17,16 @@
                         <img src="{{ url_for('static', filename='img/close.svg') }}" alt="close">
                         
                     </a>
-
+                    {{ form.get_csrf_token() }}
                     <div class="column is-12 has-text-left">
                         <h2 class="label">Email</h2>
+                        {{ form.email }}
                         <input id="emailInput" name="username" class="input is-medium-desktop" type="text" placeholder="hello@domain.com">
                         <span id="emailInputHelp" class="help is-danger is-hidden">This email is invalid</span>
                     </div>
                     <div class="column is-12 has-text-left">
                         <h2 class="label">Password</h2>
+                        {{ form.password }}
                         <input id="passwordInput" name="password" class="input is-medium-desktop" type="password" placeholder="Password">
                         <span id="passwordInputHelp" class="help is-danger is-hidden">Please enter your password</span>
                     </div>
