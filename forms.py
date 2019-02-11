@@ -1,24 +1,36 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, TextAreaField
+from wtforms import StringField, PasswordField, TextAreaField, \
+    BooleanField, SelectField
+from wtforms.validators import InputRequired, Email, URL, Length
 
 
 class LoginForm(FlaskForm):
-    email = StringField('email')
-    password = PasswordField('password')
+    email = StringField('email', validators=[InputRequired(), Email()])
+    password = PasswordField('password', validators=[InputRequired(),
+                                                     Length(min=6)])
     # add remember me later
 
 
 class RegistrationForm(FlaskForm):
-    email = StringField('email')
-    password = PasswordField('password')
+    email = StringField('email', validators=[InputRequired(), Email()])
+    password = PasswordField('password', validators=[InputRequired(),
+                                                     Length(min=6)])
 
 
 class CreateJobForm(FlaskForm):
-    title = StringField('job_title')
-    location = StringField('job_location')
-    job_type = StringField('job_type') # have to define enum for this
-    job_description = TextAreaField('job_description')
-    link_to_apply = StringField('link_to_apply') # url?
-    company_name = StringField('company_name')
-    company_location = StringField('company_location')
-    company_website = StringField('company_website') # url?
+    title = StringField('job_title', validators=[InputRequired()])
+    location = StringField('job_location', validators=[InputRequired()])
+    job_type = SelectField('Job Type', choices=[('part_time', 'Part Time'),
+                                                ('full_time', 'Full Time'),
+                                                ('contract', 'Contract')],
+                           validators=[InputRequired()])
+    job_description = TextAreaField('job_description',
+                                    validators=[InputRequired()])
+    link_to_apply = StringField('link_to_apply', validators=[InputRequired(),
+                                                             URL()])
+    company_name = StringField('company_name', validators=[InputRequired()])
+    company_location = StringField('company_location',
+                                   validators=[InputRequired()])
+    company_website = StringField('company_website',
+                                  validators=[InputRequired(), URL()])
+    remote = BooleanField('remote', validators=[InputRequired()])
