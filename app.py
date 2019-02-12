@@ -1,14 +1,14 @@
 #! /bin/env python
 
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, redirect, url_for, flash
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
 from enum import Enum
 from flask_login import LoginManager, UserMixin, login_required, logout_user, \
-    login_user
-from forms import LoginForm, RegistrationForm
+    login_user, current_user
+from forms import LoginForm, RegistrationForm, CreateJobForm
 from werkzeug.security import generate_password_hash, check_password_hash
 
 if os.getenv('FLASK_ENV') == 'development':
@@ -17,11 +17,10 @@ if os.getenv('FLASK_ENV') == 'development':
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'so92_4$lor1123sor'
+app.config['SECRET_KEY'] = '<o92_4$lor1123_0t'
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()
-login_manager.login_view = 'user_login'
 login_manager.init_app(app)
 
 
@@ -110,25 +109,32 @@ def create_user():
 @login_required
 @app.route('/user/dashboard', methods=['GET'])
 def dashboard():
-    return render_template('user/index.html')
+    jobs = current_user.jobs
+    return render_template('user/dashboard.html', jobs=jobs)
 
 
 # Get an ad
-@login_required
-@app.route('/job/<int:id>', methods=['GET'])
-def show_job():
+@app.route('/job/<int:job_id>', methods=['GET'])
+def show_job(job_id):
     ''' finds the particular job
      and returns it in its own page
      or edit the job
     '''
-    return render_template('job.html')
+    job = Job.query.get(job_id)
+    return render_template('job/index.html', job=job)
 
 
 # update an ad
 @login_required
-@app.route('/job/<int:id>', methods=['PATCH'])
-def edit_job():
-    return 'patched the request'
+@app.route('/job/<int:job_id>/edit', methods=['GET', 'POST'])
+def edit_job(job_id):
+    # fetch the job and do
+    job = Job.query.get(job_id)
+    form = CreateJobForm()
+    if form.validate_on_submit():
+        flash('Job updated successfully')
+        return redirect(url_for('dashboard'))
+    return render_template('job/new.html', form=form, job=job)
 
 
 # create a job
@@ -139,12 +145,12 @@ def job_form_create():
     returns the create ad form or
     creates the ad
     '''
-    if request.method == 'GET':
-        # do something
-        return render_template('create_ad.html')
-    elif request.method == 'POST':
-        # do something else
-        print('created the job')
+    form = CreateJobForm()
+    if form.validate_on_submit():
+        #
+        flash('Created successfully.')
+        return redirect(url_for('dashboard'))
+    return render_template('job/new.html', form=form)
 
 
 # search through the ads
@@ -157,9 +163,16 @@ def job_search():
 
 
 # reset user password
-@app.route('/user/resetpassword')
+@app.route('/user/resetpassword', methods=['GET', 'POST'])
 def reset_password():
+    # get query params
     return 'reset password page'
+
+
+# forgot password
+@app.route('/user/forgot', methods=['GET'])
+def forgot():
+    return render_template('user/forgot.html')
 
 
 @app.route('/user/logout')

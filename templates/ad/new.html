@@ -11,8 +11,7 @@
 </div>
 
 <!-- ELEMENT-8 -->
-<form id="newJobForm" action="{{ url_for('job_form_create') }}" method="post">
-    {{ form.csrf_token }}
+<form id="newJobForm" action="/user/confirmation.html" method="post">
     <div class="container" style="z-index:1;">
         <!-- ELEMENT 8a -->
         <div class="columns is-centered is-mobile">
@@ -26,40 +25,31 @@
                                 </div>
                                 <div class="column is-4">
                                     <h3 class="label is-hidden-mobile">JOB TITLE</h3>
-                                    <!-- <input id="titleInput" name="title" class="input is-medium-desktop" type="text" placeholder="Job Title"> -->
-                                    {{ form.title(class='input
-                                    is-medium-desktop', placeholder='Job Title') }}
+                                    <input id="titleInput" name="title" class="input is-medium-desktop" type="text" placeholder="Job Title">
                                     <span id="titleInputHelp" class="help is-danger is-hidden">Please enter a title</span>
                                 </div>
                                 <div class="column is-4">
                                     <h3 class="label is-hidden-mobile">JOB LOCATION</h3>
-                                    <!-- <input id="jobLocationInput" name="job_location" class="input" type="text" placeholder="Job Location"> -->
-                                    {{ form.location(class='input',
-                                    placeholder='Job Location') }}
+                                    <input id="jobLocationInput" name="job_location" class="input" type="text" placeholder="Job Location">
                                     <span id="jobLocationInputHelp" class="help is-danger is-hidden">Please enter a job location</span>
                                 </div>
                                 <div class="column is-4">
                                     <h3 class="label is-hidden-mobile">JOB TYPE</h3>
                                     <div class="select is-full-width">
-                                        <!-- <select name="job_status" class="is-full-width"> -->
-                                        <!--     <option>Full-time</option> -->
-                                        <!--     <option>Part-time</option> -->
-                                        <!-- </select> -->
-                                        {{ form.job_type(class='is-full-width') }}
+                                        <select name="job_status" class="is-full-width">
+                                            <option>Full-time</option>
+                                            <option>Part-time</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="column is-12">
                                     <h3 class="label is-hidden-mobile">JOB DESCRIPTION</h3>
-                                    <!-- <textarea id="descriptionInput" name="description" class="textarea" rows="10" placeholder="Job Description"></textarea> -->
-                                    {{ form.job_description(class='textarea',
-                                    placeholder='Job Description') }}
+                                    <textarea id="descriptionInput" name="description" class="textarea" rows="10" placeholder="Job Description"></textarea>
                                     <span id="descriptionInputHelp" class="help is-danger is-hidden">Please enter a job description</span>
                                 </div>
                                 <div class="column is-12">
                                     <h3 class="label is-hidden-mobile">LINK TO APPLY</h3>
-                                    <!-- <input id="applyLinkInput" name="application_url" class="input" type="text" placeholder="Link to apply"> -->
-                                    {{ form.link_to_apply(class='input',
-                                    placeholder='Link to apply') }}
+                                    <input id="applyLinkInput" name="application_url" class="input" type="text" placeholder="Link to apply">
                                     <span id="applyLinkInputHelp" class="help is-danger is-hidden">Must begin with http:// or www.</span>
                                 </div>
                                 <div class="column is-12 page-spacer">
@@ -67,29 +57,37 @@
                                 </div>
                                 <div class="column is-3">
                                     <h3 class="label is-hidden-mobile">COMPANY NAME</h3>
-                                    <!-- <input id="companyInput" name="company_name" class="input is-normal" type="text" placeholder="Company Name"> -->
-                                    {{ form.company_name(class='input
-                                    is-normal', placeholder='Company Name') }}
+                                    <input id="companyInput" name="company_name" class="input is-normal" type="text" placeholder="Company Name">
                                     <span id="companyInputHelp" class="help is-danger is-hidden">Please enter your company name</span>
                                 </div>
                                 <div class="column is-3">
                                     <h3 class="label is-hidden-mobile">COMPANY LOCATION</h3>
-                                    <!-- <input id="locationInput" name="company_location" class="input" type="text" placeholder="Company Location"> -->
-                                    {{ form.company_location(class='input',
-                                    placeholder='Company Location') }}
+                                    <input id="locationInput" name="company_location" class="input" type="text" placeholder="Company Location">
                                     <span id="locationInputHelp" class="help is-danger is-hidden">Please enter the job location</span>
+                                </div>
+                                <div class="column is-3 column-logo">
+                                    <div class="columns"></div>
+                                    <h3 class="label is-hidden-mobile">COMPANY LOGO</h3>
+                                    <div class="file button is-info is-full-width">
+                                        <label class="file-label">
+                                            <input id="companyLogo" class="file-input" type="file">
+                                            <span class="file-cta">
+                                                <span class="file-label">
+                                                    Choose a file…
+                                                </span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <span id="logoInputHelp" class="help is-danger is-hidden">Please upload your logo</span>
+                                </div>
+                                <div id="croppie" class="column is-3 is-hidden">
+                                    <input type="hidden" id="imagebase64" name="company_logo">
                                 </div>
                                 <div class="column is-12">
                                     <h3 class="label is-hidden-mobile">COMPANY WEBSITE</h3>
-                                    <!-- <input id="websiteInput" name="company_url" class="input" type="text" placeholder="Company Website"> -->
-                                    {{ form.company_website(class='input',
-                                    placeholder='Company Website') }}
+                                    <input id="websiteInput" name="company_url" class="input" type="text" placeholder="Company Website">
                                     <span id="websiteInputHelp" class="help is-danger is-hidden">Please enter your website</span>
                                 </div>
-                                {{ form.remote(class='input',
-                                default='unchecked') }}
-                                <!-- style this submit button -->
-                                <input type="submit" value="POST" />
                             </div>
                         </div>
                     </div>
