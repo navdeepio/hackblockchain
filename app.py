@@ -134,6 +134,7 @@ def reset_password():
     return 'reset password page'
 
 
+# TODO
 # forgot password
 @app.route('/user/forgot', methods=['GET'])
 def forgot():
