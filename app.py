@@ -1,6 +1,6 @@
 #! /bin/env python
 
-from flask import Flask, render_template, redirect, url_for, flash
+from flask import Flask, render_template, redirect, url_for, flash, request
 from dotenv import load_dotenv
 import os
 from flask_login import LoginManager, login_required, logout_user, \
@@ -121,17 +121,33 @@ def job_form_create():
 # search through the ads
 @app.route('/job/search')
 def job_search():
-    '''
-    work to be done here
-    '''
+    q = None
+    try:
+        q = request.args.get('q')
+    except KeyError:
+        pass
+    if q:
+        return render_template('')
     return 'done'
 
 
 # reset user password
 @app.route('/user/resetpassword', methods=['GET', 'POST'])
 def reset_password():
-    # get query params
-    return 'reset password page'
+    id = None
+    token = None
+    try:
+        id = request.args.get('id')
+        token = request.args.get('token')
+    except KeyError:
+        # return 404
+        pass
+
+    if id and token:
+        # both were present, carry out the verification here
+        return 'verified'
+
+    return 'pass'
 
 
 # TODO
