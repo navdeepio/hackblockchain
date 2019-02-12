@@ -2,14 +2,12 @@
 
 from flask import Flask, render_template, redirect, url_for, flash
 from dotenv import load_dotenv
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
 import os
-from enum import Enum
-from flask_login import LoginManager, UserMixin, login_required, logout_user, \
+from flask_login import LoginManager, login_required, logout_user, \
     login_user, current_user
-from forms import LoginForm, RegistrationForm, CreateJobForm
 from werkzeug.security import generate_password_hash, check_password_hash
+from forms import LoginForm, RegistrationForm, CreateJobForm
+from models import db, User, Job
 
 if os.getenv('FLASK_ENV') == 'development':
     load_dotenv()
@@ -18,7 +16,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = '<o92_4$lor1123_0t'
-db = SQLAlchemy(app)
+db.init_app(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -28,39 +26,6 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
-
-
-# Models begin
-
-class JobType(Enum):
-    contract = 'Contract'
-    full_time = 'Full Time'
-    part_time = 'Part Time'
-
-
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(100), unique=True, nullable=False)
-    jobs = db.relationship('Job', backref='user', lazy=True)
-    created_at = db.Column(db.DateTime, unique=True, nullable=False,
-                           default=datetime.utcnow)
-
-    def __repr__(self):
-        return '<User %r>' % self.email
-
-
-class Job(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(300), unique=True, nullable=False)
-    description = db.Column(db.Text, unique=True, nullable=False)
-    link_to_apply = db.Column(db.String(300), unique=True, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    job_location = db.Column(db.String(100))
-    company_name = db.Column(db.String(100), nullable=False)
-    company_url = db.Column(db.String(300), nullable=False)
-    job_type = db.Column(db.Enum(JobType), nullable=False)
-    remote_ok = db.Column(db.Boolean, nullable=False, default=False)
 
 
 # homepage
