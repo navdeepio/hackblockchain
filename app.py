@@ -47,6 +47,9 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, unique=True, nullable=False,
                            default=datetime.utcnow)
 
+    def __repr__(self):
+        return '<User %r>' % self.email
+
 
 class Job(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -92,7 +95,7 @@ def create_user():
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
-        user = User(email, generate_password_hash(password))
+        user = User(email=email, password=generate_password_hash(password))
         db.session.add(user)
         db.session.commit()
         # log in , user
@@ -107,7 +110,7 @@ def create_user():
 @login_required
 @app.route('/user/dashboard', methods=['GET'])
 def dashboard():
-    return render_template('dashboard.html')
+    return render_template('user/index.html')
 
 
 # Get an ad

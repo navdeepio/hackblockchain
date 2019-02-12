@@ -67,32 +67,32 @@ $('document').ready(function () {
     })
 
     //Sign-In Submit
-    $('#signInForm').submit(function (event) {
-        if (!isEmail($("#emailInput").val())) {
-            event.preventDefault()
-            $('#emailInputHelp').removeClass("is-hidden")
-        };
-        if ($("#passwordInput").val() == "") {
-            event.preventDefault()
-            $('#passwordInputHelp').removeClass("is-hidden")
-        }
-    })
+    // $('#signInForm').submit(function (event) {
+    //     if (!isEmail($("#emailInput").val())) {
+    //         event.preventDefault()
+    //         $('#emailInputHelp').removeClass("is-hidden")
+    //     };
+    //     if ($("#passwordInput").val() == "") {
+    //         event.preventDefault()
+    //         $('#passwordInputHelp').removeClass("is-hidden")
+    //     }
+    // })
 
     //Sign-Up Submit
-    $('#signUpForm').submit(function (event) {
-        if (!isEmail($("#emailInput").val())) {
-            event.preventDefault()
-            $('#emailInputHelp').removeClass("is-hidden")
-        };
-        if (!isPassword($("#passwordInput").val())) {
-            event.preventDefault()
-            $('#passwordInputHelp').removeClass("is-hidden")
-        };
-        if ($("#passwordInput").val() !== $("#passwordMatch").val()) {
-            event.preventDefault();
-            $('#passwordMatchHelp').removeClass("is-hidden");
-        };
-    })
+    // $('#signUpForm').submit(function (event) {
+    //     if (!isEmail($("#emailInput").val())) {
+    //         event.preventDefault()
+    //         $('#emailInputHelp').removeClass("is-hidden")
+    //     };
+    //     if (!isPassword($("#passwordInput").val())) {
+    //         event.preventDefault()
+    //         $('#passwordInputHelp').removeClass("is-hidden")
+    //     };
+    //     if ($("#passwordInput").val() !== $("#passwordMatch").val()) {
+    //         event.preventDefault();
+    //         $('#passwordMatchHelp').removeClass("is-hidden");
+    //     };
+    // })
 
     //New Job Payment Type radio button hide/show
     $("input[name=payment_type]").click(function () {
