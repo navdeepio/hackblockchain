@@ -20,6 +20,7 @@ db.init_app(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
+login_manager.login_view = 'user_login'
 
 
 # login manager callback
@@ -70,8 +71,8 @@ def create_user():
 
 
 # show user dashboard
-@login_required
 @app.route('/user/dashboard', methods=['GET'])
+@login_required
 def dashboard():
     jobs = current_user.jobs
     return render_template('user/dashboard.html', jobs=jobs)
@@ -89,8 +90,8 @@ def show_job(job_id):
 
 
 # update an ad
-@login_required
 @app.route('/job/<int:job_id>/edit', methods=['GET', 'POST'])
+@login_required
 def edit_job(job_id):
     # fetch the job and do
     job = Job.query.get(job_id)
@@ -102,8 +103,8 @@ def edit_job(job_id):
 
 
 # create a job
-@login_required
 @app.route('/job/new', methods=['GET', 'POST'])
+@login_required
 def job_form_create():
     '''
     returns the create ad form or
@@ -157,8 +158,8 @@ def forgot():
     return render_template('user/forgot.html')
 
 
-@login_required
 @app.route('/user/logout', methods=['POST'])
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))
