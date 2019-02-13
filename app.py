@@ -1,6 +1,7 @@
 #! /bin/env python
 
-from flask import Flask, render_template, redirect, url_for, flash, request
+from flask import Flask, render_template, redirect, url_for, flash, request, \
+    abort
 from dotenv import load_dotenv
 import os
 from flask_login import LoginManager, login_required, logout_user, \
@@ -45,7 +46,8 @@ def user_login():
         user = User.query.filter_by(email=email).first()
         if user and check_password_hash(user.password, password):
             login_user(user)
-            return redirect(url_for('dashboard'))
+            next = request.args.get('next')
+            return redirect(next or url_for('dashboard'))
         else:
             flash('Invalid email/password combination.')
             return redirect(url_for('user_login'))
