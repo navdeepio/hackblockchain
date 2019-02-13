@@ -41,13 +41,13 @@ def user_login():
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
-        user = User.query.filter(email=email).first()
+        user = User.query.filter_by(email=email).first()
         if user and check_password_hash(user.password, password):
             login_user(user)
-            redirect(url_for('dashboard'))
+            return redirect(url_for('dashboard'))
         else:
             flash('Invalid email/password combination.')
-            redirect(url_for('user_login'))
+            return redirect(url_for('user_login'))
     # have to add errors here
     return render_template('login/sign-in.html', form=form)
 
@@ -65,7 +65,6 @@ def create_user():
         # log in , user
         login_user(user)
         return redirect(url_for('dashboard'))
-    # the dashboard should have a create job button
     # form did not validate
     return render_template('login/sign-up.html', form=form)
 
@@ -86,7 +85,7 @@ def show_job(job_id):
      or edit the job
     '''
     job = Job.query.get(job_id)
-    return render_template('job/index.html', job=job)
+    return render_template('ad/index.html', job=job)
 
 
 # update an ad
@@ -99,7 +98,7 @@ def edit_job(job_id):
     if form.validate_on_submit():
         flash('Job updated successfully')
         return redirect(url_for('dashboard'))
-    return render_template('job/new.html', form=form, job=job)
+    return render_template('ad/new.html', form=form, job=job)
 
 
 # create a job
@@ -118,6 +117,7 @@ def job_form_create():
     return render_template('job/new.html', form=form)
 
 
+# TODO
 # search through the ads
 @app.route('/job/search')
 def job_search():
@@ -157,7 +157,8 @@ def forgot():
     return render_template('user/forgot.html')
 
 
-@app.route('/user/logout')
+@login_required
+@app.route('/user/logout', methods=['POST'])
 def logout():
     logout_user()
     return redirect(url_for('index'))

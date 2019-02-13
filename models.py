@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
 
 class Job(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(300), unique=True, nullable=False)
+    title = db.Column(db.String(300), nullable=False)
     description = db.Column(db.Text, unique=True, nullable=False)
     link_to_apply = db.Column(db.String(300), unique=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

@@ -11,8 +11,9 @@ flask = "*"
 flask-login = "*"
 flask-sqlalchemy = "*"
 python-dotenv = "*"
-psycopg2 = "*"
 flask-wtf = "*"
+psycopg2-binary = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.7"
