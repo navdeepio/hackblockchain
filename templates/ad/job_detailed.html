@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- ELEMENT-2 REPEATED ON ALL PAGES -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="/assets/css/bulma.css" rel="stylesheet">
+    <!-- END OF ELEMENT-2 -->
+
+    <link href="/assets/css/custom-description.css" rel="stylesheet">
+    <meta name="description" content="Senior Etherium Developer Job in New York City for Coinbase">
+
+    <title>Blockchain | Job Description</title>
+</head>
+
+<body>
+    <div class="bg hero hero-height">
+        <div class="hero-head is-hidden-mobile">
+            <div class="container has-text-centered">
+                <a href="/">
+                    <img src="/assets/img/blockchain_logo.png">
+                </a>
+            </div>
+        </div>
+        <div class="hero-body is-hidden-tablet">
+            <div class="columns is-mobile">
+                <div class="column is-6 has-text-left">
+                    <a class="has-no-border">
+                        <div class="icon-set">
+                            <div class="icon-label has-text-white">Back to all jobs
+                                <span class="icon-left icon-arrow-back-white"></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="column is-6 has-text-right">
+
+                    <!-- SHOW THIS MOBILE EDIT BUTTON IF THE USER IS THE OWNER  -->
+                    <a class="has-no-border" onclick="goToEditLink()">
+                        <div class="icon-set">
+                            <div class="icon-label has-text-semi-bold has-text-white">Edit this job
+                                <span class="icon-left icon-pencil-white"></span>
+                            </div>
+                        </div>
+                    </a>
+                    <form class="is-hidden" id="goToEditForm" action="/user/edit.html" method="get">
+                        <input id="job" name="job" type="text" value="999-999" />
+                    </form>
+                    <!-- END OF EDIT BUTTON  -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JOB PAGE SECTION STARTS HERE -->
+    <div class="container">
+        <div class="columns is-centered is-mobile">
+            <div class="column is-10-mobile is-11-tablet is-10-desktop page container-overlay-b">
+                <div class="columns is-centered">
+                    <div class="column is-12-desktop">
+                        <div class="page-inner transition-fade">
+                            <div class="columns is-multiline is-mobile has-text-centered">
+                                <div class="column is-hidden-mobile is-5 has-text-left">
+                                    <a class="has-no-border" onclick="history.go(-1)">
+                                        <div class="icon-set">
+                                            <div class="icon-label">Back to all jobs
+                                                <span class="icon-left icon-arrow-back"></span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="column is-hidden-mobile is-7 has-text-right">
+
+                                    <!-- SHOW DESKTOP EDIT/DELETE BUTTONS IF THE USER IS THE OWNER  -->
+                                    <a class=" has-no-border" onclick="goToEditLink()">
+                                        <div class="icon-set">
+                                            <div class="icon-label has-text-semi-bold">Edit this job
+                                                <span class="icon-left icon-pencil"></span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="has-text-danger has-no-border is-last" onclick="deleteJob()">
+                                        <div class="icon-set">
+                                            <div class="icon-label">Delete
+                                                <span class="icon-left icon-trash"></span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <form class="is-hidden" id="deleteJobForm" action="/user/" method="post">
+                                        <input id="job" name="delete_job" type="text" value="999-999" />
+                                    </form>
+                                    <!-- END OF EDIT/DELETE BUTTONS  -->
+
+                                </div>
+                                <div class="column is-12">
+                                    <h1>SENIOR ETHERIUM DEVELOPER</h1>
+                                    <h4>COINBASE</h4>
+                                </div>
+                                <div class="column is-hidden-mobile is-1-tablet is-3-desktop"></div>
+                                <div class="column is-4-mobile is-3-tablet is-2-desktop has-text-centered">
+                                    <div class="icon-set">
+                                        <div class="icon-label">Full-Time
+                                            <span class="icon-left icon-briefcase"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column is-4-mobile is-4-tablet is-2-desktop has-text-centered">
+                                    <div class="icon-set">
+                                        <div class="icon-label">New York
+                                            <span class="icon-left icon-location"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column is-4-mobile is-3-tablet is-2-desktop has-text-centered">
+                                    <div class="icon-set">
+                                        <div class="icon-label">12h ago
+                                            <span class="icon-left icon-clock"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column is-hidden-mobile is-1-tablet is-3-desktop"></div>
+                            </div>
+
+
+                            <p>
+                                Our vision is to bring more innovation, efficiency, and equality of opportunity to the world by building an open financial
+                                system. Our first step on that journey is making digital currency accessible and approachable
+                                for everyone. Two principles guide our efforts. First, be the most trusted company in our
+                                domain. Second, create user-focused products that are easier and more delightful to use.
+                                <br>
+                                <br> Moving and transacting financial assets safely is core to executing on our vision and building
+                                our brand of trust. The payments team builds shared infrastructure for Coinbase and GDAX
+                                to securely store and trade billion dollars of assets. We take on hard engineering problems
+                                in cryptography, security, blockchain technology and distributed systems, with a focus on
+                                building high reliability services for product teams.
+                                <br>
+                                <br> On payments, you will be tasked with helping Coinbase and GDAX expand to new markets and
+                                assets. You’ll work closely with product, infrastructure, fraud and security teams to add
+                                new cryptocurrencies to our platform, and to help expand to new countries around the globe.
+                                You will also be responsible for designing, building and maintaining scalable software systems
+                                used by over 9 million customers use to trade cryptocurrencies.
+                                <br>
+                                <br> A little about our team: we take continuous learning to heart. We often dive into computational,
+                                financial and economic theory to better understand the engineering problems we face. We also
+                                make sure that we have the best tools for the job - we are thoughtful about code quality,
+                                testing and architecture, we push code to production confidently multiple times a day, work
+                                primarily on microservices and have great monitoring, alerting and debugging tools for production.
+                                We also value positive energy, and clear communication and are committed to building an inclusive
+                                environment for people from every background.
+                                <br>
+                                <br> Responsibilities Build integrations with fiat banking partners in countries around the world,
+                                to make cryptocurrencies accessible to everyone. Design secure and highly reliable services
+                                to integrate with blockchains and add new cryptocurrency assets to Coinbase and GDAX. Write
+                                infrastructural services that provide secure storage, accounting and transactional services
+                                to help our customers trade assets safely. Work with engineers, product managers and senior
+                                leadership to turn our vision into a tangible roadmap every quarter. Add positive energy
+                                in every meeting, and make your coworkers feel included in every interaction.
+                                <br>
+                                <br> Requirements You have at least 4 years of experience in software engineering. You’ve designed,
+                                built, scaled and maintained production services, and know how to compose a service oriented
+                                architecture. You write high quality, well tested code to meet the needs of your customers.
+                                You’re passionate about building an open financial system that brings the world together.
+                            </p>
+                        </div>
+                        <div class="column is-12 has-text-centered email-button-section">
+                            <a href="http://coinbase.com" target="Apply" class="button is-info apply-button">APPLY NOW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="container section-detail">
+        <div class="columns has-text-centered is-multiline is-mobile">
+            <div class="column is-12 detail-logo">
+                <img src="/assets/img/sample_logo.png" alt=" ">
+            </div>
+            <div class="column is-12">
+                <h1 class="detail-name">COINBASE</h1>
+            </div>
+            <div class="column is-1-mobile is-4-tablet"></div>
+            <div class="column is-5-mobile is-2-tablet has-text-centered">
+                <div class="icon-set">
+                    <div class="icon-label">New York
+                        <span class="icon-left icon-location"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-5-mobile is-2-tablet has-text-centered">
+                <div class="icon-set">
+                    <div class="icon-label">coinbase.com
+                        <span class="icon-left icon-person"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4"></div>
+        </div>
+    </div>
+    <!-- JOB PAGE SECTION ENDS HERE -->
+
+    <!-- ELEMENT-3 (WITH UNIQUE CSS CUSTOM-DESCRIPTION.CSS)  -->
+    <!-- EMAIL SUBSCRIBER SECTION STARTS HERE -->
+    <div class="container has-text-centered email-label is-hidden-mobile">
+        <h2>GET THE LATEST JOBS IN YOUR INBOX</h2>
+    </div>
+    </div>
+    <div class="container email-container ">
+        <div class="columns email is-centered ">
+            <div class="column is-8-tablet is-7-desktop email-section ">
+                <div class="columns has-text-left ">
+                    <div class="column is-1 email-label-mobile">
+                        <h2 class="is-hidden-tablet">GET THE LATEST JOBS IN YOUR INBOX</h2>
+                    </div>
+                    <div id="emailSection" class="column is-8 has-text-left email-input-section">
+                        <p class="has-icons-left has-icons-right has-no-padding">
+                            <input id="emailInput" class="input email-input" type="email" placeholder="YourName@email.com ">
+                            <span id="emailInputHelp" class="help is-danger is-hidden">This email is invalid</span>
+                        </p>
+                    </div>
+                    <div class="column is-2 has-text-centered email-button-section">
+                        <a id="emailSignUpButton" class="button is-info email-button">
+                            <span class="is-hidden-mobile">SIGN UP</span>
+                            <span class="is-hidden-tablet">SUBSCRIBE</span>
+                        </a>
+                    </div>
+                    <div class="column is-1 is-hidden-mobile"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- EMAIL SUBSCRIBER SECTION ENDS HERE -->
+
+    <!-- FOOTER SECTION STARTS HERE -->
+    <section class="bg hero footer ">
+        <div class="hero-head ">
+            <div class="container has-text-centered ">
+                <a href="/">
+                    <img src="/assets/img/blockchain_logo.png">
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- FOOTER JOB SECTION ENDS HERE -->
+    <!-- END OF ELEMENT-3 -->
+
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/functions.js"></script>
+
+</body>
+
+</html>

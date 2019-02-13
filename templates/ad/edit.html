@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- ELEMENT-2 REPEATED ON ALL PAGES -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link href="/assets/css/bulma.css" rel="stylesheet">
+    <!-- END OF ELEMENT-2 -->
+
+    <!-- ELEMENT 7 -->
+    <link href="/assets/css/custom-edit.css" rel="stylesheet">
+    <!-- File Resize & Upload CSS -->
+    <link href="/assets/css/croppie.css" rel="stylesheet">
+    <!-- END OF ELEMENT 7 -->
+
+    <title>Blockchain | Edit Job</title>
+</head>
+
+<body>
+    <div class="bg hero hero-height">
+        <div class="hero-body"></div>
+    </div>
+    <!-- JOB PAGE SECTION STARTS HERE -->
+    <form id="newJobForm" action="/user/confirmation.html" method="post">
+        <div class="container" style="z-index:1;">
+            <!-- ELEMENT 8a -->
+            <div class="columns is-centered is-mobile">
+                <div class="column is-10-mobile is-11-tablet is-10-desktop page container-overlay">
+                    <div class="columns is-centered">
+                        <div class="column is-12-desktop">
+                            <div class="page-inner transition-fade">
+                                <div class="columns is-multiline">
+                                    <div class="column is-12">
+                                        <h2>JOB DETAILS</h2>
+                                    </div>
+                                    <div class="column is-4">
+                                        <h3 class="label is-hidden-mobile">JOB TITLE</h3>
+                                        <input id="titleInput" name="title" class="input is-medium-desktop" type="text" placeholder="Job Title">
+                                        <span id="titleInputHelp" class="help is-danger is-hidden">Please enter a title</span>
+                                    </div>
+                                    <div class="column is-4">
+                                        <h3 class="label is-hidden-mobile">JOB LOCATION</h3>
+                                        <input id="jobLocationInput" name="job_location" class="input" type="text" placeholder="Job Location">
+                                        <span id="jobLocationInputHelp" class="help is-danger is-hidden">Please enter a job location</span>
+                                    </div>
+                                    <div class="column is-4">
+                                        <h3 class="label is-hidden-mobile">JOB TYPE</h3>
+                                        <div class="select is-full-width">
+                                            <select name="job_status" class="is-full-width">
+                                                <option>Full-time</option>
+                                                <option>Part-time</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="column is-12">
+                                        <h3 class="label is-hidden-mobile">JOB DESCRIPTION</h3>
+                                        <textarea id="descriptionInput" name="description" class="textarea" rows="10" placeholder="Job Description"></textarea>
+                                        <span id="descriptionInputHelp" class="help is-danger is-hidden">Please enter a job description</span>
+                                    </div>
+                                    <div class="column is-12">
+                                        <h3 class="label is-hidden-mobile">LINK TO APPLY</h3>
+                                        <input id="applyLinkInput" name="application_url" class="input" type="text" placeholder="Link to apply">
+                                        <span id="applyLinkInputHelp" class="help is-danger is-hidden">Must begin with http:// or www.</span>
+                                    </div>
+                                    <div class="column is-12 page-spacer">
+                                        <h2>COMPANY DETAILS</h2>
+                                    </div>
+                                    <div class="column is-3">
+                                        <h3 class="label is-hidden-mobile">COMPANY NAME</h3>
+                                        <input id="companyInput" name="company_name" class="input is-normal" type="text" placeholder="Company Name">
+                                        <span id="companyInputHelp" class="help is-danger is-hidden">Please enter your company name</span>
+                                    </div>
+                                    <div class="column is-3">
+                                        <h3 class="label is-hidden-mobile">COMPANY LOCATION</h3>
+                                        <input id="locationInput" name="company_location" class="input" type="text" placeholder="Company Location">
+                                        <span id="locationInputHelp" class="help is-danger is-hidden">Please enter the job location</span>
+                                    </div>
+                                    <div class="column is-3 column-logo">
+                                        <div class="columns"></div>
+                                        <h3 class="label is-hidden-mobile">COMPANY LOGO</h3>
+                                        <div class="file button is-info is-full-width">
+                                            <label class="file-label">
+                                                <input id="companyLogo" class="file-input" type="file">
+                                                <span class="file-cta">
+                                                    <span class="file-label">
+                                                        Choose a file…
+                                                    </span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <span id="logoInputHelp" class="help is-danger is-hidden">Please upload your logo</span>
+                                    </div>
+                                    <div id="croppie" class="column is-3 is-hidden">
+                                        <input type="hidden" id="imagebase64" name="company_logo">
+                                    </div>
+                                    <div class="column is-12">
+                                        <h3 class="label is-hidden-mobile">COMPANY WEBSITE</h3>
+                                        <input id="websiteInput" name="company_url" class="input" type="text" placeholder="Company Website">
+                                        <span id="websiteInputHelp" class="help is-danger is-hidden">Please enter your website</span>
+                                    </div>
+                                    <!-- ELEMENT-8b IS UNIQUE  -->
+                                    <div class="column is-12 page-button-group"></div>
+                                    <div class="column is-3">
+                                        <input type="hidden" name="edit_job" value="999-999">
+                                        <input type="submit" class="button is-info is-full-width button-post" value="POST JOB">
+                                    </div>
+                                    <div class="column is-3">
+                                        <a href="/user" class="button is-outlined is-danger is-full-width has-no-border">CANCEL</a>
+                                    </div>
+                                    <div class="column is-hidden-mobile is-3"></div>
+                                    <div class="column is-3 has-text-centered-mobile">
+                                        <a class="button is-outlined is-danger has-no-border has-full-width-mobile" onclick="deleteJob()">DELETE POSTING</a>
+                                    </div>
+                                    <!-- END OF ELEMENT 8b -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END OF ELEMENT 8a -->
+        </div>
+    </form>
+    <!-- END OF ELEMENT 8 -->
+
+    <!-- UNIQUE - DELETE JOB -->
+    <form class="is-hidden" id="deleteJobForm" action="/user/" method="post">
+        <input id="job" name="delete_job" type="text" value="999-999" />
+    </form>
+    <!-- END OF UNIQUE DELETE JOB -->
+
+
+    <!-- ELEMENT-10 FOOTER SECTION STARTS HERE -->
+    <section class="bg hero footer ">
+        <div class="hero-head ">
+            <div class="container has-text-centered ">
+                <img src="/assets/img/blockchain_logo.png ">
+            </div>
+        </div>
+    </section>
+    <!-- END OF ELEMENT 10 -->
+
+    <!-- jQuery -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <!-- MarkDown -->
+    <script src="/assets/js/marked.min.js"></script>
+    <!-- File Resize & Upload Script -->
+    <script src="/assets/js/croppie.min.js"></script>
+    <!-- Custom Functions -->
+    <script src="/assets/js/functions.js"></script>
+</body>
+
+</html>

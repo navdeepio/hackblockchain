@@ -1,13 +1,12 @@
 #! /bin/env python
 
-from flask import Flask, render_template, redirect, url_for, flash, request, \
-    abort
+from flask import Flask, render_template, redirect, url_for, flash, request
 from dotenv import load_dotenv
 import os
 from flask_login import LoginManager, login_required, logout_user, \
     login_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from forms import LoginForm, RegistrationForm, CreateJobForm
+from forms import LoginForm, RegistrationForm, CreateJobForm, JobSearchForm
 from models import db, User, Job
 
 if os.getenv('FLASK_ENV') == 'development':
@@ -39,20 +38,22 @@ def index():
 # login user
 @app.route('/user/login', methods=['GET', 'POST'])
 def user_login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        email = form.email.data
-        password = form.password.data
-        user = User.query.filter_by(email=email).first()
-        if user and check_password_hash(user.password, password):
-            login_user(user)
-            next = request.args.get('next')
-            return redirect(next or url_for('dashboard'))
-        else:
-            flash('Invalid email/password combination.')
-            return redirect(url_for('user_login'))
-    # have to add errors here
-    return render_template('login/sign-in.html', form=form)
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard'))
+    else:
+        form = LoginForm()
+        if form.validate_on_submit():
+            email = form.email.data
+            password = form.password.data
+            user = User.query.filter_by(email=email).first()
+            if user and check_password_hash(user.password, password):
+                login_user(user)
+                return redirect(url_for('dashboard'))
+            else:
+                flash('Invalid email/password combination.')
+                return redirect(url_for('user_login'))
+        # have to add errors here
+        return render_template('login/sign-in.html', form=form)
 
 
 # create user
@@ -120,18 +121,20 @@ def job_form_create():
     return render_template('ad/new.html', form=form)
 
 
-# TODO
 # search through the ads
 @app.route('/job/search')
 def job_search():
-    q = None
     try:
         q = request.args.get('q')
     except KeyError:
         pass
     if q:
-        return render_template('')
-    return 'done'
+        # use q to search title here
+        jobs = Job.query.filter()
+        return render_template('ad/search.html', jobs=jobs)
+    else:
+        form = JobSearchForm()
+        return render_template('ad/search.html', form=form)
 
 
 # reset user password
