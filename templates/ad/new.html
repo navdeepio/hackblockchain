@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<link href="{{ url_for('static', filename='css/custom-edit.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom-edit.css') }}">
 <title>New Ad | HackBlockchain</title>
-{% enblock %}
+{% endblock %}
 
 {% block body %}
 <div class="bg hero hero-height">
@@ -11,7 +11,7 @@
 </div>
 
 <!-- ELEMENT-8 -->
-<form id="newJobForm" action="/user/confirmation.html" method="post">
+<form id="newJobForm" action="{{ url_for('job_form_create') }}" method="post">
   {{ form.csrf_token }}
     <div class="container" style="z-index:1;">
         <!-- ELEMENT 8a -->
@@ -116,6 +116,7 @@
                                 </div>
                                 <div class="column is-12">
                                   <input type="submit" value="POST" />
+                                  <a href="/">Cancel</a>
                                 </div>
                             </div>
                         </div>

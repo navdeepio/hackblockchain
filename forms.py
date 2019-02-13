@@ -22,7 +22,7 @@ class RegistrationForm(FlaskForm):
 
 class CreateJobForm(FlaskForm):
     title = StringField('job_title', validators=[InputRequired()])
-    location = StringField('job_location', validators=[InputRequired()])
+    job_location = StringField('job_location', validators=[InputRequired()])
     job_type = SelectField('Job Type', choices=[('part_time', 'Part Time'),
                                                 ('full_time', 'Full Time'),
                                                 ('contract', 'Contract')],

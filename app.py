@@ -114,7 +114,7 @@ def job_form_create():
         #
         flash('Created successfully.')
         return redirect(url_for('dashboard'))
-    return render_template('job/new.html', form=form)
+    return render_template('ad/new.html', form=form)
 
 
 # TODO
