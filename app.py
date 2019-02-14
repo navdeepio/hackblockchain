@@ -202,7 +202,7 @@ def create_app():
 
 # TODO
 # user password reset form
-    @app.route('/user/resetpassword')
+    @app.route('/user/resetpassword', methods=['GET', 'POST'])
     def reset_password():
         try:
             id = request.args.get('id')
