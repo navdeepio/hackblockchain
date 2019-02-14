@@ -125,6 +125,7 @@ def job_form_create():
     '''
     form = CreateJobForm()
     if form.validate_on_submit():
+        user_id = current_user.id
         title = form.title.data
         job_location = form.job_location.data
         job_type = form.job_type.data
@@ -134,7 +135,8 @@ def job_form_create():
         company_location = form.company_location.data
         company_website = form.company_website.data
         remote = form.remote.data
-        job = Job(title=title, job_location=job_location, job_type=job_type,
+        job = Job(user_id=user_id, title=title, job_location=job_location,
+                  job_type=job_type,
                   job_description=job_description, link_to_apply=link_to_apply,
                   company_name=company_name, company_location=company_location,
                   company_website=company_website, remote=remote)
