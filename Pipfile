@@ -14,6 +14,7 @@ python-dotenv = "*"
 flask-wtf = "*"
 psycopg2 = "*"
 flask-mail = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.7"

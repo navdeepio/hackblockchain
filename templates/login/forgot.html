@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="{{ url_for('static', filename='css/custom-access.css') }}" rel="stylesheet">
+<!-- END OF ELEMENT 4 -->
+<title>Forgot Password | Hackblockchain</title>
+{% endblock %}
+
+{% block body %}
+<form id="signInForm" action="{{ url_for('forgot') }}" method="post">
+    <section class="bg hero is-fullheight">
+        <div class="hero-body">
+            <div class="container pop-up">
+                <div class="columns is-multiline has-text-centered">
+                    {{ form.csrf_token }}
+                    <div class="column is-12 has-text-left">
+                        <h2 class="label">Email</h2>
+                        {{ form.email(class='input is-medium-desktop') }}
+                        <!-- <input id="emailInput" name="username" class="input is-medium-desktop" type="text" placeholder="hello@domain.com"> -->
+                        {% for error in form.email.errors %}
+                        <span id="emailInputHelp" class="help is-danger">
+                          {{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <!-- END OF ELEMENT 5b-->
+                    <!-- ELEMENT 5d - SIGN IN BUTTONS -->
+                    <div class="column is-12 is-condensed">
+                        <input type="submit" class="button is-info"
+                        value="Submit" />
+                    </div>
+                    <div class="column is-12 is-condensed">
+                      <a href="{{ url_for('index') }}"
+                        class="reset-link">Return Home</a>
+                    </div>
+                    <!-- END OF ELEMENT 5d -->
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+<!-- END OF ELEMENT 5 -->
+{% endblock %}

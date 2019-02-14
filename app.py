@@ -184,7 +184,7 @@ def create_app():
 
 
 # forgot password
-    @app.route('/user/forgot', methods=['GET'])
+    @app.route('/user/forgot', methods=['GET', 'POST'])
     def forgot():
         message = '''If your email address exists in our database, an email containing
         password reset instructions has been sent to it.'''
@@ -197,7 +197,7 @@ def create_app():
                 # email found, send email
                 pass
             return render_template('message.html', message=message)
-        return render_template('user/forgot.html', form=form)
+        return render_template('login/forgot.html', form=form)
 
 
 # TODO
