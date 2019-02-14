@@ -4,6 +4,10 @@ A crypto job board written in python and bulma
 
 ####Endpoints
 
+`GET` `/`
+
+Home page
+
 `GET` `/user/login`
 
 Return the login page
@@ -11,10 +15,6 @@ Return the login page
 `POST` `/user/login`
 
 Logs in the user
-
-`GET` `/user/:id`
-
-Show user dashboard
 
 `GET` `/user/new`
 
@@ -24,22 +24,42 @@ Signup page
 
 Create new user and log them in
 
+`GET` `/user/dashboard`
+
+Show user dashboard
+
+`GET` `/user/forgot`
+
+Show the forgot password page
+
+`GET` `/user/resetpassword`
+
+Reset the user password after verifying the token
+
 `GET` `/job/:id`
 
-Show the job
+Show ad page
 
-`PATCH` `/job/:id`
+`GET` `/job/:id/edit`
 
-Update the job
+Show the edit ad page
+
+`POST` `/job/:id/edit`
+
+Update the ad
+
+`GET` `/job/:id/delete`
+
+Delete the ad
 
 `GET` `/job/new`
 
-Show the create job form
+Show the create ad form
 
 `POST` `/job/new`
 
 
-Create the job
+Create the ad
 
 `GET` `/job/search`
 

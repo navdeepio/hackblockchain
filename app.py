@@ -32,9 +32,14 @@ def load_user(user_id):
 # homepage
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard'))
+    else:
+        jobs = Job.query.limit(5).all()
+        return render_template('index.html', jobs=jobs)
 
 
+# maybe do the 'next' thing here
 # login user
 @app.route('/user/login', methods=['GET', 'POST'])
 def user_login():
@@ -63,10 +68,13 @@ def create_user():
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
+        user = User.query.filter_by(email=email)
+        if user:
+            flash('User already exists.')
+            return redirect(url_for('create_user'))
         user = User(email=email, password=generate_password_hash(password))
         db.session.add(user)
         db.session.commit()
-        # log in , user
         login_user(user)
         return redirect(url_for('dashboard'))
     # form did not validate
@@ -89,16 +97,17 @@ def show_job(job_id):
      or edit the job
     '''
     job = Job.query.get(job_id)
-    return render_template('ad/index.html', job=job)
+    return render_template('ad/job_detailed.html', job=job)
 
 
+# TODO
 # update an ad
 @app.route('/job/<int:job_id>/edit', methods=['GET', 'POST'])
 @login_required
 def edit_job(job_id):
     # fetch the job and do
     job = Job.query.get(job_id)
-    form = CreateJobForm()
+    form = CreateJobForm(obj=job)
     if form.validate_on_submit():
         flash('Job updated successfully')
         return redirect(url_for('dashboard'))
@@ -115,21 +124,36 @@ def job_form_create():
     '''
     form = CreateJobForm()
     if form.validate_on_submit():
-        #
-        flash('Created successfully.')
+        title = form.title.data
+        job_location = form.job_location.data
+        job_type = form.job_type.data
+        job_description = form.job_description.data
+        link_to_apply = form.link_to_apply.data
+        company_name = form.company_name.data
+        company_location = form.company_location.data
+        company_website = form.company_website.data
+        remote = form.remote.data
+        job = Job(title=title, job_location=job_location, job_type=job_type,
+                  job_description=job_description, link_to_apply=link_to_apply,
+                  company_name=company_name, company_location=company_location,
+                  company_website=company_website, remote=remote)
+        db.session.add(job)
+        db.session.commit()
+        flash('Ad created successfully.')
         return redirect(url_for('dashboard'))
     return render_template('ad/new.html', form=form)
 
 
+# TODO
 # search through the ads
-@app.route('/job/search')
+@app.route('/job/search', methods=['GET'])
 def job_search():
     try:
         q = request.args.get('q')
     except KeyError:
-        pass
+        form = JobSearchForm()
+        return render_template('ad/search.html', form=form)
     if q:
-        # use q to search title here
         jobs = Job.query.filter()
         return render_template('ad/search.html', jobs=jobs)
     else:
@@ -137,30 +161,38 @@ def job_search():
         return render_template('ad/search.html', form=form)
 
 
-# reset user password
-@app.route('/user/resetpassword', methods=['GET', 'POST'])
-def reset_password():
-    id = None
-    token = None
-    try:
-        id = request.args.get('id')
-        token = request.args.get('token')
-    except KeyError:
-        # return 404
-        pass
-
-    if id and token:
-        # both were present, carry out the verification here
-        return 'verified'
-
-    return 'pass'
-
-
 # TODO
+@app.route('/job/<int:job_id>/delete', methods=['GET'])
+def delete_job(job_id):
+    job = Job.query.get(job_id)
+    if job.user.id == current_user.id:
+        db.session.remove(job)
+        db.session.commit()
+        flash('Job delete successful.')
+        return redirect(url_for('dashboard.html'))
+    else:
+        return 'hello world'
+
+
 # forgot password
 @app.route('/user/forgot', methods=['GET'])
 def forgot():
     return render_template('user/forgot.html')
+
+
+# TODO
+# user password reset form
+@app.route('/user/resetpassword')
+def reset_password():
+    try:
+        id = request.args.get('id')
+        token = request.args.get('token')
+    except KeyError:
+        # page not found
+        return render_template('404.html')
+    user = User.query.get(id)
+    return render_template('user/password_reset_success.html', user=user,
+                           token=token)
 
 
 @app.route('/user/logout', methods=['POST'])
