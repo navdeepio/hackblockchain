@@ -104,7 +104,7 @@ def create_app():
         return render_template('ad/job_detailed.html', job=job)
 
 
-# TODO
+# TODO: testing
 # update an ad
     @app.route('/job/<int:job_id>/edit', methods=['GET', 'POST'])
     @login_required
@@ -169,7 +169,7 @@ def create_app():
             return render_template('ad/search.html', form=form)
 
 
-# TODO
+# delete ad
     @app.route('/job/<int:job_id>/delete', methods=['GET'])
     def delete_job(job_id):
         job = Job.query.get(job_id)
@@ -179,7 +179,7 @@ def create_app():
             flash('Job delete successful.')
             return redirect(url_for('dashboard.html'))
         else:
-            return 'hello world'
+            return render_template('401.html')
 
 
 # forgot password
