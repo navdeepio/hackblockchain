@@ -14,17 +14,22 @@
         <div class="container has-text-centered-mobile" style="z-index:1">
             <div class="columns is-mobile is-multiline hero-nav">
                 <div class="column">
-                    <!-- <h2 style="display:inline">COINBASE</h2> -->
-                    <!-- <div class="edit-pencil"> -->
-                    <!-- </div> -->
-
+                  <a href="/">
+                    <img src="{{ url_for('static',
+                    filename='img/blockchain_logo.png') }}" alt="Logo">
+                  </a>
                 </div>
                 <div class="column is-4-tablet is-4-desktop is-1-fullscreen">
-                    <div class="columns is-mobile">
-                        <div class="column is-6">
+                    <div class="columns is-mobile is-vcentered">
+                        <div class="column is-5">
+                          <p>
+                          {{ email }}
+                          </p>
+                        </div>
+                        <div class="column is-4">
                             <a href="/job/new" class="button is-info full-search">POST A JOB</a>
                         </div>
-                        <div class="column is-6">
+                        <div class="column is-3">
                             <form id="signOut" action="/user/logout" method="post">
                                 <input name="user" value="logout" type="hidden" />
                                 <input type="submit" class="button button-transparent full-search" value="SIGN OUT" />
@@ -50,7 +55,7 @@
         <div class="column is-11-tablet is-10-widescreen posting-section">
             <div class="columns">
                 <div class="column is-3-tablet is-4-desktop is-vertical-centered has-text-left-tablet has-text-centered posting-padding-left">
-                    <h1>Senior Etherium Developer</h1>
+                    <h1>Senior Ethereum Developer</h1>
                 </div>
                 <div class="column is-4-tablet is-4-desktop is-vertical-centered">
                     <div class="columns is-variable is-1 post-icons is-mobile is-multiline">
@@ -101,14 +106,4 @@
 </div>
 <!-- ACTIVE POSTING SECTION ENDS HERE -->
 
-
-<!-- UNIQUE FOOTER SECTION STARTS HERE -->
-<!-- <section class="bg footer-b"> -->
-<!--     <div class="hero-head"> -->
-<!--         <div class="container has-text-centered "> -->
-            <img src="('static', filename='img/blockchain_logo.png')">
-<!--         </div> -->
-<!--     </div> -->
-<!-- </section> -->
-<!-- UNIQUE FOOTER SECTION ENDS HERE -->
 {% endblock %}

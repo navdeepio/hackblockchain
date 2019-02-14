@@ -86,7 +86,8 @@ def create_user():
 @login_required
 def dashboard():
     jobs = current_user.jobs
-    return render_template('user/dashboard.html', jobs=jobs)
+    email = current_user.email
+    return render_template('user/dashboard.html', jobs=jobs, email=email)
 
 
 # Get an ad
