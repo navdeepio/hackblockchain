@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="{{ url_for('static', filename='css/custom-access.css') }}" rel="stylesheet">
+<!-- END OF ELEMENT 4 -->
+<title>Notice</title>
+{% endblock %}
+
+{% block body %}
+<section class="bg hero is-fullheight">
+    <div class="hero-body">
+        <div class="container pop-up">
+            <div class="columns is-multiline has-text-centered">
+                <div class="column is-12 has-text-center">
+                  {{ message }}
+                </div>
+                <div class="column is-12 is-condensed">
+                  <a href="{{ url_for('index') }}"
+                    class="reset-link">Home</a>
+                </div>
+                <!-- END OF ELEMENT 5d -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END OF ELEMENT 5 -->
+{% endblock %}

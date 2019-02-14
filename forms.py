@@ -55,3 +55,7 @@ class PasswordResetForm(FlaskForm):
                                          Length(min=6),
                                          EqualTo('confirm_password')])
     confirm_password = PasswordField('confirm_password')
+
+
+class ForgotEmailForm(FlaskForm):
+    email = StringField('email', validators=[InputRequired(), Email()])
