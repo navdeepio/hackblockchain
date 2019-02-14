@@ -88,20 +88,9 @@
                                     is-danger">{{ error }}</span>
                                     {% endfor %}
                                 </div>
-                                <div class="column is-3">
-                                    <h3 class="label is-hidden-mobile">COMPANY LOCATION</h3>
-                                    <!-- <input id="locationInput" name="company_location" class="input" type="text" placeholder="Company Location"> -->
-                                    {{ form.company_location(class='input',
-                                    placeholder='Company Location') }}
-                                    {% for error in form.company_location.error
-                                    %}
-                                    <span id="locationInputHelp" class="help
-                                    is-danger">{{ error }}</span>
-                                    {% endfor %}
-                                </div>
                                 <div class="column is-3 column-logo">
                                   <!-- put remote here -->
-                                  {{ form.remote() }}
+                                  {{ form.remote_ok() }}
                                 </div>
                                 <div class="column is-12">
                                     <h3 class="label is-hidden-mobile">COMPANY WEBSITE</h3>

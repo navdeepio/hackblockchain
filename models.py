@@ -32,7 +32,7 @@ class Job(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     job_location = db.Column(db.String(100), nullable=False)
     company_name = db.Column(db.String(100), nullable=False)
-    company_url = db.Column(db.String(300), nullable=False)
+    company_website = db.Column(db.String(300), nullable=False)
     job_type = db.Column(db.Enum(JobType), nullable=False)
     remote_ok = db.Column(db.Boolean, nullable=False, default=False)
 

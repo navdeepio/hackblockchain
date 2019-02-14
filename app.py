@@ -136,16 +136,14 @@ def create_app():
             job_description = form.job_description.data
             link_to_apply = form.link_to_apply.data
             company_name = form.company_name.data
-            company_location = form.company_location.data
             company_website = form.company_website.data
-            remote = form.remote.data
+            remote_ok = form.remote_ok.data
             job = Job(user_id=user_id, title=title, job_location=job_location,
                       job_type=job_type,
                       job_description=job_description,
                       link_to_apply=link_to_apply,
                       company_name=company_name,
-                      company_location=company_location,
-                      company_website=company_website, remote=remote)
+                      company_website=company_website, remote_ok=remote_ok)
             db.session.add(job)
             db.session.commit()
             flash('Ad created successfully.')

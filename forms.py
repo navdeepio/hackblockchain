@@ -32,11 +32,10 @@ class CreateJobForm(FlaskForm):
     link_to_apply = StringField('link_to_apply', validators=[InputRequired(),
                                                              URL()])
     company_name = StringField('company_name', validators=[InputRequired()])
-    company_location = StringField('company_location',
-                                   validators=[InputRequired()])
+    job_location = StringField('job_location', validators=[InputRequired()])
     company_website = StringField('company_website',
                                   validators=[InputRequired(), URL()])
-    remote = BooleanField('remote')
+    remote_ok = BooleanField('remote')
 
 
 class JobSearchForm(FlaskForm):
