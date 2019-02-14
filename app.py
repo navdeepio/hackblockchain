@@ -70,7 +70,8 @@ def create_app():
         if form.validate_on_submit():
             email = form.email.data
             password = form.password.data
-            user = User.query.filter_by(email=email)
+            user = User.query.filter_by(email=email).first()
+            print(user)
             if user:
                 flash('User already exists.')
                 return redirect(url_for('create_user'))
@@ -139,8 +140,10 @@ def create_app():
             remote = form.remote.data
             job = Job(user_id=user_id, title=title, job_location=job_location,
                       job_type=job_type,
-                      job_description=job_description, link_to_apply=link_to_apply,
-                      company_name=company_name, company_location=company_location,
+                      job_description=job_description,
+                      link_to_apply=link_to_apply,
+                      company_name=company_name,
+                      company_location=company_location,
                       company_website=company_website, remote=remote)
             db.session.add(job)
             db.session.commit()
