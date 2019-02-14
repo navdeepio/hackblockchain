@@ -3,7 +3,7 @@
 {% block head %}
 <link href="{{ url_for('static', filename='css/custom-access.css') }}" rel="stylesheet">
 <!-- END OF ELEMENT 4 -->
-<title>Hackblockchain | Sign In</title>
+<title>Sign In | Hackblockchain</title>
 {% endblock %}
 
 {% block body %}
@@ -13,11 +13,13 @@
         <div class="hero-body">
             <div class="container pop-up">
                 <div class="columns is-multiline has-text-centered">
-                    <a href="/" class="close">
-                        <img src="{{ url_for('static',
-                        filename='img/close.svg') }}" alt="close" />
-                    </a>
                     {{ form.csrf_token }}
+                    {% for message in get_flashed_messages() %}
+                      <div class="column is-12 has-text-left"
+                        style="background: #fffbdd; color:#735C0F;">
+                        {{ message }}
+                      </div>
+                    {% endfor %}
                     <div class="column is-12 has-text-left">
                         <h2 class="label">Email</h2>
                         {{ form.email(class='input is-medium-desktop',
@@ -52,6 +54,10 @@
                     <div class="column is-12 is-condensed">
                       <a href="{{ url_for('create_user') }}" class="button
                           has-text-white dark-blue">New User? Sign Up</a>
+                    </div>
+                    <div class="column is-12 is-condensed">
+                      <a href="{{ url_for('index') }}"
+                        class="reset-link" style="margin-top: 10px;">Return Home</a>
                     </div>
                     <!-- END OF ELEMENT 5d -->
                 </div>
