@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block head %}
 <link href="{{ url_for('static', filename='css/custom-access.css') }}" rel="stylesheet">
-<title>Hackblockchain | Sign Up</title>
+<title>Sign Up | Hackblockchain</title>
 {% endblock %}
 
 {% block body %}
@@ -12,10 +12,12 @@
         <div class="hero-body">
             <div class="container pop-up">
                 <div class="columns is-multiline has-text-centered">
-                    <a href="/" class="close">
-                        <img src="{{ url_for('static',
-                        filename='img/close.svg')}}" alt="close" />
-                    </a>
+                    {% for message in get_flashed_messages() %}
+                      <div class="column is-12 has-text-left"
+                        style="background: #fffbdd; color:#735C0F;">
+                        {{ message }}
+                      </div>
+                    {% endfor %}
                     <div class="column is-12 has-text-left">
                         <h2 class="label">Email</h2>
                         {{ form.email(class='input is-medium-desktop',
@@ -53,6 +55,10 @@
                     <div class="column is-12 is-condensed">
                       <a href="{{ url_for('user_login') }}" class="button
                           has-text-white dark-blue">Old User? Sign In</a>
+                    </div>
+                    <div class="column is-12 is-condensed">
+                      <a href="{{ url_for('index') }}"
+                        class="reset-link">Return Home</a>
                     </div>
                     <!-- END OF ELEMENT 5C -->
                 </div>
