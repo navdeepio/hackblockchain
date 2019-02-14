@@ -12,8 +12,8 @@ flask-login = "*"
 flask-sqlalchemy = "*"
 python-dotenv = "*"
 flask-wtf = "*"
-psycopg2-binary = "*"
 psycopg2 = "*"
+flask-mail = "*"
 
 [requires]
 python_version = "3.7"

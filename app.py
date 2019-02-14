@@ -6,7 +6,8 @@ import os
 from flask_login import LoginManager, login_required, logout_user, \
     login_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from forms import LoginForm, RegistrationForm, CreateJobForm, JobSearchForm
+from forms import LoginForm, RegistrationForm, CreateJobForm, JobSearchForm, \
+    ForgotEmailForm, PasswordResetForm
 from models import db, User, Job
 
 if os.getenv('FLASK_ENV') == 'development':
@@ -185,7 +186,18 @@ def create_app():
 # forgot password
     @app.route('/user/forgot', methods=['GET'])
     def forgot():
-        return render_template('user/forgot.html')
+        message = '''If your email address exists in our database, an email containing
+        password reset instructions has been sent to it.'''
+        form = ForgotEmailForm()
+        if form.validate_on_submit():
+            # send email
+            email = form.email.data
+            user = User.query.filter_by(email=email).first()
+            if user:
+                # email found, send email
+                pass
+            return render_template('message.html', message=message)
+        return render_template('user/forgot.html', form=form)
 
 
 # TODO
