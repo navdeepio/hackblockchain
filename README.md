@@ -2,7 +2,7 @@
 
 A crypto job board written in python and bulma
 
-####Endpoints
+#### Endpoints
 
 `GET` `/`
 
@@ -58,20 +58,19 @@ Show the create ad form
 
 `POST` `/job/new`
 
-
 Create the ad
 
 `GET` `/job/search`
 
 Search the jobs for keywords and return the search page
 
-####Tech Stack
+#### Tech Stack
 
 * Flask
 * Jinja2
 * Bulma
 * PostgreSQL
 
-####License
+#### License
 
-GPL v 3.0
+GPL v3.0
