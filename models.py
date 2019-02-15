@@ -1,10 +1,8 @@
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.hybrid import hybrid_property
 from enum import Enum
 from flask_login import UserMixin
 from datetime import datetime
-
-db = SQLAlchemy()
+from app import db
 
 
 class JobType(Enum):
