@@ -35,7 +35,6 @@ class CreateJobForm(FlaskForm):
     job_location = StringField('job_location', validators=[InputRequired()])
     company_website = StringField('company_website',
                                   validators=[InputRequired(), URL()])
-    remote_ok = BooleanField('remote')
 
 
 class JobSearchForm(FlaskForm):
@@ -45,7 +44,6 @@ class JobSearchForm(FlaskForm):
                                                 ('contract', 'Contract'),
                                                 ('any', 'Any')],
                            validators=[InputRequired()])
-    remote = BooleanField('remote', validators=[InputRequired()])
 
 
 class PasswordResetForm(FlaskForm):

@@ -20,7 +20,7 @@
                 <div class="columns is-centered">
                     <div class="column is-12-desktop">
                         <div class="page-inner transition-fade">
-                            <div class="columns is-multiline">
+                            <div class="columns is-multiline is-vcentered">
                                 <div class="column is-12">
                                     <h2>JOB DETAILS</h2>
                                 </div>
@@ -80,7 +80,6 @@
                                 </div>
                                 <div class="column is-3">
                                     <h3 class="label is-hidden-mobile">COMPANY NAME</h3>
-                                    <!-- <input id="companyInput" name="company_name" class="input is-normal" type="text" placeholder="Company Name"> -->
                                     {{ form.company_name(class='input
                                     is-normal', placeholder='Company Name') }}
                                     {% for error in form.company_name.errors %}
@@ -88,10 +87,7 @@
                                     is-danger">{{ error }}</span>
                                     {% endfor %}
                                 </div>
-                                <div class="column is-3 column-logo">
-                                  <!-- put remote here -->
-                                  {{ form.remote_ok() }}
-                                </div>
+
                                 <div class="column is-12">
                                     <h3 class="label is-hidden-mobile">COMPANY WEBSITE</h3>
                                     <!-- <input id="websiteInput" name="company_url" class="input" type="text" placeholder="Company Website"> -->
@@ -103,9 +99,13 @@
                                     is-danger">{{ error }}</span>
                                     {% endfor %}
                                 </div>
-                                <div class="column is-12">
-                                  <input type="submit" value="POST" />
-                                  <a href="/">Cancel</a>
+                                <div class="column is-3">
+                                  <input type="submit" class="button is-info
+                                  is-full-width button-post" value="POST" />
+                                </div>
+                                <div class="column is-2">
+                                  <a href="/" class="button is-outlined
+                                    is-danger is-full-width has-no-border">Cancel</a>
                                 </div>
                             </div>
                         </div>
