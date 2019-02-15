@@ -107,7 +107,7 @@ def create_app():
 
 # TODO: testing
 # update an ad
-    @app.route('/job/<int:job_id>/edit', methods=['GET', 'POST'])
+    @app.route('/job/edit/<int:job_id>', methods=['GET', 'POST'])
     @login_required
     def edit_job(job_id):
         # fetch the job and do
@@ -169,7 +169,7 @@ def create_app():
 
 
 # delete ad
-    @app.route('/job/<int:job_id>/delete', methods=['GET'])
+    @app.route('/job/delete/<int:job_id>', methods=['GET'])
     def delete_job(job_id):
         job = Job.query.get(job_id)
         if job.user.id == current_user.id:
