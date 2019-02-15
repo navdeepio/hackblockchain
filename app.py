@@ -220,7 +220,3 @@ def reset_password():
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
-
-if __name__ == '__main__':
-    app.run(port=os.getenv('PORT'))
