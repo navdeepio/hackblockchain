@@ -9,6 +9,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from forms import LoginForm, RegistrationForm, CreateJobForm, JobSearchForm, \
     ForgotEmailForm, PasswordResetForm
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 if os.getenv('FLASK_ENV') == 'development':
     load_dotenv()
@@ -19,6 +20,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = '<o92_4$lor1123_0t'
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 from models import User, Job
 
