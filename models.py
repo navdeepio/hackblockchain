@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.ext.hybrid import hybrid_property
 from enum import Enum
 from flask_login import UserMixin
 from datetime import datetime
@@ -36,3 +37,8 @@ class Job(db.Model):
     job_type = db.Column(db.Enum(JobType), nullable=False)
     created_at = db.Column(db.DateTime, unique=True, nullable=False,
                            default=datetime.utcnow)
+
+    @hybrid_property
+    def since(self):
+        return 
+

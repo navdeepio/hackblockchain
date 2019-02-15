@@ -32,7 +32,7 @@
                 <div class="search-section column is-10-tablet is-9-desktop is-7-widescreen">
                     <form id="homeSearchForm" action="/job/search" method="get">
                         <input id="search" name="q" type="text" class="input is-large full-search hero-search fsi-a icon-search icon-search-hero"
-                            placeholder="Search for Jobs: Developer, UI Designer, Etherium...">
+                            placeholder="Search for Jobs: Developer, UI Designer, Ethereum etc.">
                     </form>
                 </div>
             </div>
@@ -55,7 +55,7 @@
 </div>
 <div class="container post-container">
 
-    <!-- ELEMENT-1a LOOP THIS SECTION TO DISPLAY JOBS -->
+    {% for ad in ads %}
     <div class="columns post is-centered">
         <div id="999-999" class="column is-11-tablet is-10-widescreen posting-section" style="cursor:pointer" onclick="goToJobLink(id)">
             <div class="columns has-text-left">
@@ -64,7 +64,7 @@
                     filename='img/sample_logo.png') }}" alt="">
                 </div>
                 <div class="column is-3-tablet is-3-desktop has-text-left-tablet is-vertical-centered mobile-job-title">
-                    <h1>Senior Ethereum Developer</h1>
+                  <h1>{{ ad.title }}</h1>
                 </div>
                 <div class="column is-8-tablet is-7-desktop is-vertical-centered">
                     <div class="columns is-variable is-1 post-icons is-multiline is-mobile ">
@@ -72,19 +72,19 @@
 
                             <div class="icon-set">
                                 <div class="icon-left icon-person"></div>
-                                <div class="data-right">CoinBase</div>
+                                <div class="data-right">{{ ad.company_name }}</div>
                             </div>
                         </div>
                         <div class="column is-3-tablet is-6-mobile">
                             <div class="icon-set">
                                 <div class="icon-left icon-location"></div>
-                                <div class="data-right">New York</div>
+                                <div class="data-right">{{ ad.job_location }}</div>
                             </div>
                         </div>
                         <div class="column is-3-tablet is-6-mobile">
                             <div class="icon-set">
                                 <div class="icon-left icon-briefcase"></div>
-                                <div class="data-right">Full-Time</div>
+                                <div class="data-right">{{ ad.job_type.value }}</div>
                             </div>
                         </div>
                         <div class="column is-3-tablet is-6-mobile">
@@ -97,18 +97,21 @@
                 </div>
                 <div class="column is-1 is-hidden-tablet-only is-1-desktop has-text-centered is-vertical-centered post-arrow">&rarr;</div>
                 <div class="column is-1 has-text-centered is-vertical-centered post-apply-now">
-                    <a class="button is-info">APPLY NOW</a>
+                  <a class="button is-info" href="{{ url_for('show_job',
+                    job_id=ad.id) }}">APPLY NOW</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- ELEMENT 1a ENDs HERE -->
-
     <!--ONE FORM TO SUBMIT ANY SELECTED JOB-->
-    <form class="is-hidden" id="goToJobForm" action="/ad/job_description.html" method="get">
+    <form class="is-hidden" id="goToJobForm" action="{{ url_for('show_job',
+      job_id=ad.id) }}" method="get">
         <input id="job" name="job" type="text" value="" />
     </form>
     <!-- END OF FORM -->
+    {% endfor %}
+
 
 </div>
 <!-- ELEMENT-1 ENDS HERE -->

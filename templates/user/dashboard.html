@@ -61,7 +61,7 @@
         <div class="column is-11-tablet is-10-widescreen posting-section">
             <div class="columns">
                 <div class="column is-3-tablet is-4-desktop is-vertical-centered has-text-left-tablet has-text-centered posting-padding-left">
-                    <h1>Senior Ethereum Developer</h1>
+                  <h1>{{ ad.title }}</h1>
                 </div>
                 <div class="column is-4-tablet is-4-desktop is-vertical-centered">
                     <div class="columns is-variable is-1 post-icons is-mobile is-multiline">
@@ -83,21 +83,21 @@
                     <div class="columns has-text-centered is-mobile">
 
                         <div class="column">
-                            <form id="goToJobForm" action="/ad/job_description.html" method="get">
-                                <input name="job" value="999-999" type="hidden" />
+                          <form id="goToJobForm" action="{{
+                            url_for('show_job', job_id=ad.id) }}" method="get">
                                 <input type="submit" class="button is-info full-search" value="VIEW" />
                             </form>
 
                         </div>
                         <div class="column">
-                            <form id="goToEditForm" action="/user/edit.html" method="get">
-                                <input name="job" value="999-999" type="hidden" />
+                          <form id="goToEditForm" action="{{
+                            url_for('edit_job', job_id=ad.id) }}" method="get">
                                 <input type="submit" class="button is-info full-search" value="EDIT" />
                             </form>
                         </div>
                         <div class="column">
-                            <form id="deleteJobForm" action="/user/" method="post">
-                                <input name="delete_job" value="999-999" type="hidden" />
+                          <form id="deleteJobForm" action="{{
+                            url_for('delete_job', job_id=ad.id) }}" method="post">
                                 <input type="submit" class="button is-outlined is-flat is-danger full-search" value="DELETE" />
                             </form>
                         </div>

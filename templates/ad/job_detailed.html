@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+{% block head %}
+<link href="{{ url_for('static', filename='css/custom-description.css') }}" rel="stylesheet">
+    <title>Job Description | HackBlockchain</title>
+{% endblock %}
 
-<head>
-    <!-- ELEMENT-2 REPEATED ON ALL PAGES -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link href="/assets/css/bulma.css" rel="stylesheet">
-    <!-- END OF ELEMENT-2 -->
-
-    <link href="/assets/css/custom-description.css" rel="stylesheet">
-    <meta name="description" content="Senior Etherium Developer Job in New York City for Coinbase">
-
-    <title>Blockchain | Job Description</title>
-</head>
-
-<body>
+{% block body %}
     <div class="bg hero hero-height">
         <div class="hero-head is-hidden-mobile">
             <div class="container has-text-centered">
                 <a href="/">
-                    <img src="/assets/img/blockchain_logo.png">
+                    <img src="{{ url_for('static',
+                    filename='img/blockchain_logo.png') }}">
                 </a>
             </div>
         </div>
@@ -240,17 +231,10 @@
         <div class="hero-head ">
             <div class="container has-text-centered ">
                 <a href="/">
-                    <img src="/assets/img/blockchain_logo.png">
+                  <img src="{{ url_for('static',
+                  filename='img/blockchain_logo.png') }}">
                 </a>
             </div>
         </div>
     </section>
-    <!-- FOOTER JOB SECTION ENDS HERE -->
-    <!-- END OF ELEMENT-3 -->
-
-    <script src="/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="/assets/js/functions.js"></script>
-
-</body>
-
-</html>
+    {% endblock %}

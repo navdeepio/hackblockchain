@@ -39,7 +39,7 @@ def create_app():
             return redirect(url_for('dashboard'))
         else:
             jobs = Job.query.limit(5).all()
-            return render_template('index.html', jobs=jobs)
+            return render_template('index.html', ads=jobs)
 
 
 # maybe do the 'next' thing here
@@ -91,7 +91,7 @@ def create_app():
     def dashboard():
         jobs = current_user.jobs
         email = current_user.email
-        return render_template('user/dashboard.html', jobs=jobs, email=email)
+        return render_template('user/dashboard.html', ads=jobs, email=email)
 
 
 # Get an ad
@@ -137,13 +137,12 @@ def create_app():
             link_to_apply = form.link_to_apply.data
             company_name = form.company_name.data
             company_website = form.company_website.data
-            remote_ok = form.remote_ok.data
             job = Job(user_id=user_id, title=title, job_location=job_location,
                       job_type=job_type,
                       job_description=job_description,
                       link_to_apply=link_to_apply,
                       company_name=company_name,
-                      company_website=company_website, remote_ok=remote_ok)
+                      company_website=company_website)
             db.session.add(job)
             db.session.commit()
             flash('Ad created successfully.')
