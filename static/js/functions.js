@@ -66,33 +66,6 @@ $('document').ready(function () {
         }
     })
 
-    //Sign-In Submit
-    // $('#signInForm').submit(function (event) {
-    //     if (!isEmail($("#emailInput").val())) {
-    //         event.preventDefault()
-    //         $('#emailInputHelp').removeClass("is-hidden")
-    //     };
-    //     if ($("#passwordInput").val() == "") {
-    //         event.preventDefault()
-    //         $('#passwordInputHelp').removeClass("is-hidden")
-    //     }
-    // })
-
-    //Sign-Up Submit
-    // $('#signUpForm').submit(function (event) {
-    //     if (!isEmail($("#emailInput").val())) {
-    //         event.preventDefault()
-    //         $('#emailInputHelp').removeClass("is-hidden")
-    //     };
-    //     if (!isPassword($("#passwordInput").val())) {
-    //         event.preventDefault()
-    //         $('#passwordInputHelp').removeClass("is-hidden")
-    //     };
-    //     if ($("#passwordInput").val() !== $("#passwordMatch").val()) {
-    //         event.preventDefault();
-    //         $('#passwordMatchHelp').removeClass("is-hidden");
-    //     };
-    // })
 
     //New Job Payment Type radio button hide/show
     $("input[name=payment_type]").click(function () {
@@ -229,26 +202,6 @@ function sanitize(input) {
 };
 
 //VALIDATIONS
-function isEmail(email) {
-    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    return regex.test(email);
-}
-
-function isPassword(password) {
-    var regex = /^(?=.*\d).{7,15}$/;
-    return regex.test(password);
-}
-
-function isURL(urlInput, helpInput) {
-    var regex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/;
-    var isURL = regex.test(urlInput.val())
-    if (!isURL) {
-        helpInput.removeClass("is-hidden")
-    } else {
-        helpInput.addClass("is-hidden")
-    }
-    return isURL;
-}
 
 function isBlank(fieldInput, helpInput) {
     var isBlankCheck = fieldInput.val() == "";
