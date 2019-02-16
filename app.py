@@ -10,6 +10,7 @@ from forms import LoginForm, RegistrationForm, CreateJobForm, JobSearchForm, \
     ForgotEmailForm, PasswordResetForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from models import User, Job
 
 if os.getenv('FLASK_ENV') == 'development':
     load_dotenv()
@@ -18,11 +19,10 @@ if os.getenv('FLASK_ENV') == 'development':
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = '<o92_4$lor1123_0t'
+app.config['SECRET_KEY'] = '<o#2_4$l&r+1$3_0t'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from models import User, Job
 
 login_manager = LoginManager()
 login_manager.init_app(app)

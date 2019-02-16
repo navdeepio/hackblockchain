@@ -1,8 +1,9 @@
-from sqlalchemy.ext.hybrid import hybrid_property
+from sqlalchemy.ext.hybrid import hybrid_method
 from enum import Enum
 from flask_login import UserMixin
 from datetime import datetime
 from app import db
+import timeago
 
 
 class JobType(Enum):
@@ -36,7 +37,7 @@ class Job(db.Model):
     created_at = db.Column(db.DateTime, unique=True, nullable=False,
                            default=datetime.utcnow)
 
-    @hybrid_property
+    @hybrid_method
     def since(self):
-        return 
-
+        now = datetime.utcnow()
+        return timeago.format(self.created_at, now)
