@@ -10,7 +10,6 @@ from forms import LoginForm, RegistrationForm, CreateJobForm, JobSearchForm, \
     ForgotEmailForm, PasswordResetForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from models import User, Job
 
 if os.getenv('FLASK_ENV') == 'development':
     load_dotenv()
@@ -28,6 +27,8 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'user_login'
 
+
+from models import User, Job
 
 # login manager callback
 @login_manager.user_loader
