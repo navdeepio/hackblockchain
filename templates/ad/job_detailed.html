@@ -25,22 +25,6 @@
                         </div>
                     </a>
                 </div>
-                <div class="column is-6 has-text-right">
-
-                    <!-- SHOW THIS MOBILE EDIT BUTTON IF THE USER IS THE OWNER  -->
-                    <a class="has-no-border" onclick="goToEditLink()">
-                        <div class="icon-set">
-                            <div class="icon-label has-text-semi-bold has-text-white">Edit this job
-                                <span class="icon-left icon-pencil-white"></span>
-                            </div>
-                        </div>
-                    </a>
-                    <form class="is-hidden" id="goToEditForm" action="/user/edit.html" method="get">
-                        <input id="job" name="job" type="text" value="999-999" />
-                    </form>
-                    <!-- END OF EDIT BUTTON  -->
-
-                </div>
             </div>
         </div>
     </div>
@@ -62,101 +46,42 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="column is-hidden-mobile is-7 has-text-right">
-
-                                    <!-- SHOW DESKTOP EDIT/DELETE BUTTONS IF THE USER IS THE OWNER  -->
-                                    <a class=" has-no-border" onclick="goToEditLink()">
-                                        <div class="icon-set">
-                                            <div class="icon-label has-text-semi-bold">Edit this job
-                                                <span class="icon-left icon-pencil"></span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="has-text-danger has-no-border is-last" onclick="deleteJob()">
-                                        <div class="icon-set">
-                                            <div class="icon-label">Delete
-                                                <span class="icon-left icon-trash"></span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <form class="is-hidden" id="deleteJobForm" action="/user/" method="post">
-                                        <input id="job" name="delete_job" type="text" value="999-999" />
-                                    </form>
-                                    <!-- END OF EDIT/DELETE BUTTONS  -->
-
-                                </div>
                                 <div class="column is-12">
-                                    <h1>SENIOR ETHERIUM DEVELOPER</h1>
-                                    <h4>COINBASE</h4>
+                                  <h1>{{ ad.title }}</h1>
+                                  <h4>{{ ad.company_name }}</h4>
                                 </div>
                                 <div class="column is-hidden-mobile is-1-tablet is-3-desktop"></div>
                                 <div class="column is-4-mobile is-3-tablet is-2-desktop has-text-centered">
                                     <div class="icon-set">
-                                        <div class="icon-label">Full-Time
+                                      <div class="icon-label">{{
+                                        ad.job_type.value }}
                                             <span class="icon-left icon-briefcase"></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="column is-4-mobile is-4-tablet is-2-desktop has-text-centered">
                                     <div class="icon-set">
-                                        <div class="icon-label">New York
+                                      <div class="icon-label">{{
+                                        ad.job_location }}
                                             <span class="icon-left icon-location"></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="column is-4-mobile is-3-tablet is-2-desktop has-text-centered">
                                     <div class="icon-set">
-                                        <div class="icon-label">12h ago
+                                      <div class="icon-label">{{ ad.since() }}
                                             <span class="icon-left icon-clock"></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="column is-hidden-mobile is-1-tablet is-3-desktop"></div>
                             </div>
-
-
                             <p>
-                                Our vision is to bring more innovation, efficiency, and equality of opportunity to the world by building an open financial
-                                system. Our first step on that journey is making digital currency accessible and approachable
-                                for everyone. Two principles guide our efforts. First, be the most trusted company in our
-                                domain. Second, create user-focused products that are easier and more delightful to use.
-                                <br>
-                                <br> Moving and transacting financial assets safely is core to executing on our vision and building
-                                our brand of trust. The payments team builds shared infrastructure for Coinbase and GDAX
-                                to securely store and trade billion dollars of assets. We take on hard engineering problems
-                                in cryptography, security, blockchain technology and distributed systems, with a focus on
-                                building high reliability services for product teams.
-                                <br>
-                                <br> On payments, you will be tasked with helping Coinbase and GDAX expand to new markets and
-                                assets. You’ll work closely with product, infrastructure, fraud and security teams to add
-                                new cryptocurrencies to our platform, and to help expand to new countries around the globe.
-                                You will also be responsible for designing, building and maintaining scalable software systems
-                                used by over 9 million customers use to trade cryptocurrencies.
-                                <br>
-                                <br> A little about our team: we take continuous learning to heart. We often dive into computational,
-                                financial and economic theory to better understand the engineering problems we face. We also
-                                make sure that we have the best tools for the job - we are thoughtful about code quality,
-                                testing and architecture, we push code to production confidently multiple times a day, work
-                                primarily on microservices and have great monitoring, alerting and debugging tools for production.
-                                We also value positive energy, and clear communication and are committed to building an inclusive
-                                environment for people from every background.
-                                <br>
-                                <br> Responsibilities Build integrations with fiat banking partners in countries around the world,
-                                to make cryptocurrencies accessible to everyone. Design secure and highly reliable services
-                                to integrate with blockchains and add new cryptocurrency assets to Coinbase and GDAX. Write
-                                infrastructural services that provide secure storage, accounting and transactional services
-                                to help our customers trade assets safely. Work with engineers, product managers and senior
-                                leadership to turn our vision into a tangible roadmap every quarter. Add positive energy
-                                in every meeting, and make your coworkers feel included in every interaction.
-                                <br>
-                                <br> Requirements You have at least 4 years of experience in software engineering. You’ve designed,
-                                built, scaled and maintained production services, and know how to compose a service oriented
-                                architecture. You write high quality, well tested code to meet the needs of your customers.
-                                You’re passionate about building an open financial system that brings the world together.
+                              {{ ad.job_description }}
                             </p>
                         </div>
                         <div class="column is-12 has-text-centered email-button-section">
-                            <a href="http://coinbase.com" target="Apply" class="button is-info apply-button">APPLY NOW</a>
+                          <a href="{{ ad.link_to_apply }}" target="Apply" class="button is-info apply-button">APPLY NOW</a>
                         </div>
                     </div>
                 </div>
@@ -172,19 +97,19 @@
                 <img src="/assets/img/sample_logo.png" alt=" ">
             </div>
             <div class="column is-12">
-                <h1 class="detail-name">COINBASE</h1>
+              <h1 class="detail-name">{{ ad.company_name }}</h1>
             </div>
             <div class="column is-1-mobile is-4-tablet"></div>
             <div class="column is-5-mobile is-2-tablet has-text-centered">
                 <div class="icon-set">
-                    <div class="icon-label">New York
+                  <div class="icon-label">{{ ad.job_location }}
                         <span class="icon-left icon-location"></span>
                     </div>
                 </div>
             </div>
             <div class="column is-5-mobile is-2-tablet has-text-centered">
                 <div class="icon-set">
-                    <div class="icon-label">coinbase.com
+                  <div class="icon-label">{{ ad.company_website }}
                         <span class="icon-left icon-person"></span>
                     </div>
                 </div>
