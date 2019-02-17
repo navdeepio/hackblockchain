@@ -118,9 +118,17 @@ def edit_job(job_id):
     job = Job.query.get(job_id)
     form = CreateJobForm(obj=job)
     if form.validate_on_submit():
+        job.title = form.title.data
+        job.job_description = form.job_description.data
+        job.link_to_apply = form.link_to_apply.data
+        job.job_location = form.job_location.data
+        job.company_name = form.company_name.data
+        job.company_website = form.company_website.data
+        job.job_type = form.job_type.data
+        db.session.commit()
         flash('Job updated successfully')
         return redirect(url_for('dashboard'))
-    return render_template('ad/new.html', form=form, job=job)
+    return render_template('ad/edit.html', form=form, job=job)
 
 
 # create a job
