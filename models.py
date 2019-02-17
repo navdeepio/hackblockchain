@@ -1,7 +1,7 @@
 from sqlalchemy.ext.hybrid import hybrid_method
 from enum import Enum
 from flask_login import UserMixin
-from datetime import datetime
+from datetime import datetime, timedelta
 from app import db
 import timeago
 
@@ -41,3 +41,8 @@ class Job(db.Model):
     def since(self):
         now = datetime.utcnow()
         return timeago.format(self.created_at, now)
+
+    @hybrid_method
+    def to_expiration(self):
+        expiration_date = self.created_at + timedelta(days=30)
+        return timeago.format(expiration_date, datetime.utcnow())

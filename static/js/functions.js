@@ -115,9 +115,9 @@ $('document').ready(function () {
         }
     })
 
-  $('#dismiss-flash').click(function () {
-    $('#flash-message').remove()
-  })
+    $('#dismiss-flash').click(function () {
+      $('#flash-message').remove();
+    });
 
 });
 

@@ -15,7 +15,7 @@
     <div class="column has-text-centered" style="background-color: #f7f7f7;">
       {{ messages[0] }}
       <img src="{{ url_for('static', filename='img/close.svg') }}"
-      style="height:30px; width:30px;" alt="dismiss flash button"
+      style="height:30px; width:30px; cursor:pointer;" alt="dismiss flash button"
       class="is-pulled-right" id="dismiss-flash">
     </div>
   </section>
@@ -87,7 +87,8 @@
                         <div class="column is-6-tablet is-12-mobile is-6-full-hd">
                             <div class="icon-set">
                                 <div class="icon-left icon-hourglass"></div>
-                                <div class="data-right">Expiring in 8 days</div>
+                                <div class="data-right">Expiring in {{
+                                  ad.to_expiration() }}</div>
                             </div>
                         </div>
                     </div>
