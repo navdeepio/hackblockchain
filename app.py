@@ -60,6 +60,7 @@ def user_login():
             user = User.query.filter_by(email=email).first()
             if user and check_password_hash(user.password, password):
                 login_user(user)
+                flash('Welcome {}!'.format(email))
                 return redirect(url_for('dashboard'))
             else:
                 flash('Invalid email/password combination.')
@@ -103,10 +104,9 @@ def dashboard():
 def show_job(job_id):
     ''' finds the particular job
      and returns it in its own page
-     or edit the job
     '''
     job = Job.query.get(job_id)
-    return render_template('ad/job_detailed.html', job=job)
+    return render_template('ad/job_detailed.html', ad=job)
 
 
 # TODO: testing

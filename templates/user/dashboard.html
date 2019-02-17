@@ -8,6 +8,19 @@
 {% endblock %}
 
 {% block body %}
+{% with messages = get_flashed_messages() %}
+{% if messages|length > 0 %}
+  <section class="columns is-vcentered"
+    id="flash-message" style="margin-top: auto;">
+    <div class="column has-text-centered" style="background-color: #f7f7f7;">
+      {{ messages[0] }}
+      <img src="{{ url_for('static', filename='img/close.svg') }}"
+      style="height:30px; width:30px;" alt="dismiss flash button"
+      class="is-pulled-right" id="dismiss-flash">
+    </div>
+  </section>
+{% endif %}
+{% endwith %}
     <!-- UNIQUE TOP SECTION BEGINS HERE -->
 <section class="bg hero">
     <div class="hero-head">

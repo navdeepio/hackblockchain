@@ -525,6 +525,10 @@ button {
     padding: 40px 20px;
 }
 
+.none {
+  display: none;
+}
+
 /*! BULMA MEDIA QUERIES CSS */
 
 @media (max-width: 1407px) {}

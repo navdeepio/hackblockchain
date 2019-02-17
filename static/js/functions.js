@@ -3,47 +3,6 @@ $('document').ready(function () {
     //ADD YEARS TO THE CC DROWPDOWN FOR NEW ADS
     var currentYear = new Date().getFullYear()
 
-    for (i = 0; i < 6; i++) {
-        $('#ccYearInput').append($("<option />").text(currentYear));
-        currentYear++;
-    }
-
-    //CROPPIE IMAGE RESIZE
-    if ($('#croppie').length !== 0) {
-        var $uploadCrop;
-
-        $('#companyLogo').on('change', function () {
-            readFile(this);
-            $('#croppie').removeClass("is-hidden")
-        });
-
-        function readFile(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $uploadCrop.croppie('bind', {
-                        url: e.target.result
-                    });
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        };
-
-        $uploadCrop = $('#croppie').croppie({
-            viewport: {
-                width: 100,
-                height: 100,
-                type: 'circle'
-            },
-            boundary: {
-                width: "160px",
-                height: "120px"
-            },
-            showZoomer: false,
-            enforceBoundary: false
-        });
-    };
-    //END CROPPIE IMAGE RESIZE
 
     //HOME SEARCH SUBMIT
     $('#homeSearchForm').submit(function (event) {
@@ -155,6 +114,10 @@ $('document').ready(function () {
             $('#passwordInputHelp').addClass("is-hidden")
         }
     })
+
+  $('#dismiss-flash').click(function () {
+    $('#flash-message').remove()
+  })
 
 });
 
