@@ -44,6 +44,7 @@ class JobSearchForm(FlaskForm):
                                                 ('contract', 'Contract'),
                                                 ('any', 'Any')],
                            validators=[InputRequired()])
+    job_location = StringField('job_location', validators=[InputRequired()])
 
 
 class PasswordResetForm(FlaskForm):

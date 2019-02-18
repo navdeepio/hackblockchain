@@ -29,8 +29,7 @@
                                         <!-- <input id="search" name="search" type="text" class="input is-large full-search full-search-input fsi-a icon-search" placeholder="Search for Jobs"> -->
                                         {{ form.query(class='input is-large
                                         full-search full-search-input fsi-a
-                                        icon-search', placeholder='Enter
-                                        keywords like android, react etc') }}
+                                        icon-search', placeholder='Enter keywords like android, react etc') }}
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +51,9 @@
                             <div class="column is-6-mobile is-3-tablet is-desktop-2 is-widescreen-1">
                                 <div class="field">
                                     <div class="control">
-                                      {{ form.remote() }}
+                                      {{ form.job_location(class='input
+                                      is-large full-search full-search-input
+                                      icon-location', placeholder='City') }}
                                         <!-- <input id="job_location" name="job_location" type="text" class="input is-large full-search full-search-input icon-location" -->
                                         <!--     type="text" placeholder="City"> -->
                                     </div>
@@ -162,6 +163,16 @@
             </div>
         </div>
     </div>
+  <!-- FOOTER SECTION STARTS HERE -->
+  <section class="bg hero footer ">
+    <div class="hero-head ">
+      <div class="container has-text-centered ">
+        <a href="/">
+          <img src="{{ url_for('static', filename='img/blockchain_logo.png') }}">
+        </a>
+      </div>
+    </div>
+  </section>
     <!-- EMAIL SUBSCRIBER SECTION ENDS HERE -->
 
 {% endblock %}
