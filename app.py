@@ -180,7 +180,7 @@ def job_search():
                  cast(Job.job_type, String).ilike('%{}%'.format(job_type)),
                  Job.job_location.ilike('%{}%'.format(location)))).all()
     else:
-        ads = Job.query.limit(5)
+        ads = Job.query.limit(5).all()
     return render_template('ad/search.html', ads=ads)
 
 

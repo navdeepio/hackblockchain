@@ -9,7 +9,7 @@
     <!-- UNIQUE SEARCH SECTION BEGINS HERE -->
     <section class="bg hero">
         <div class="hero-head">
-            <div class="container has-text-centered">
+            <div class="container has-text-centered" style="z-index:99999">
               <a href="{{ url_for('index') }}">
                   <img src="{{ url_for('static',
                   filename='img/blockchain_logo.png') }}" />
@@ -71,16 +71,16 @@
     </div>
     <div class="container post-container section-full-height">
 
-        <!-- ELEMENT-1a LOOP THIS SECTION TO DISPLAY JOBS -->
+      {% for ad in ads %}
         <div class="columns post is-centered transition-fade">
-            <div id="999-999" class="column is-11-tablet is-10-widescreen posting-section" style="cursor:pointer" onclick="goToJobLink(id)">
+          <div id="{{ ad.id }}" class="column is-11-tablet is-10-widescreen posting-section" style="cursor:pointer" onclick="goToJobLink(id)">
                 <div class="columns has-text-left">
                     <div class="column is-1-tablet has-text-centered is-vertical-centered mobile-job-logo">
                         <img src="{{ url_for('static',
                         filename='img/sample_logo.png') }}" alt="Logo" />
                     </div>
                     <div class="column is-3-tablet is-3-desktop has-text-left-tablet is-vertical-centered mobile-job-title">
-                        <h1>Senior Etherium Developer</h1>
+                      <h1>{{ ad.title }}</h1>
                     </div>
                     <div class="column is-8-tablet is-7-desktop is-vertical-centered">
                         <div class="columns is-variable is-1 post-icons is-multiline is-mobile ">
@@ -88,36 +88,38 @@
 
                                 <div class="icon-set">
                                     <div class="icon-left icon-person"></div>
-                                    <div class="data-right">CoinBase</div>
+                                    <div class="data-right">{{ ad.company_name }}</div>
                                 </div>
                             </div>
                             <div class="column is-3-tablet is-6-mobile">
                                 <div class="icon-set">
                                     <div class="icon-left icon-location"></div>
-                                    <div class="data-right">New York</div>
+                                    <div class="data-right">{{ ad.job_location }}</div>
                                 </div>
                             </div>
                             <div class="column is-3-tablet is-6-mobile">
                                 <div class="icon-set">
                                     <div class="icon-left icon-briefcase"></div>
-                                    <div class="data-right">Full-Time</div>
+                                    <div class="data-right">{{
+                                      ad.job_type.value }}</div>
                                 </div>
                             </div>
                             <div class="column is-3-tablet is-6-mobile">
                                 <div class="icon-set">
                                     <div class="icon-left icon-clock"></div>
-                                    <div class="data-right">12 hours ago</div>
+                                    <div class="data-right">{{ ad.since() }}</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="column is-1 is-hidden-tablet-only is-1-desktop has-text-centered is-vertical-centered post-arrow">&rarr;</div>
                     <div class="column is-1 has-text-centered is-vertical-centered post-apply-now">
-                        <a href="http://coinbase.com" class="button is-info">APPLY NOW</a>
+                      <a href="{{ ad.link_to_apply }}" class="button is-info">APPLY NOW</a>
                     </div>
                 </div>
             </div>
         </div>
+        {% endfor %}
         <!-- ELEMENT 1a ENDs HERE -->
 
         <!--ONE FORM TO SUBMIT ANY SELECTED JOB-->
