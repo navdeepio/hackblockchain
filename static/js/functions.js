@@ -3,3 +3,7 @@ $('document').ready(function () {
       $('#flash-message').remove();
     });
 });
+
+function goToJobLink(id) {
+  window.location.href=`/job/${id}`;
+};
