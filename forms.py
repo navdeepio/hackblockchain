@@ -37,16 +37,6 @@ class CreateJobForm(FlaskForm):
                                   validators=[InputRequired(), URL()])
 
 
-class JobSearchForm(FlaskForm):
-    query = StringField('query', validators=[InputRequired()])
-    job_type = SelectField('Job Type', choices=[('part_time', 'Part Time'),
-                                                ('full_time', 'Full Time'),
-                                                ('contract', 'Contract'),
-                                                ('any', 'Any')],
-                           validators=[InputRequired()])
-    job_location = StringField('job_location', validators=[InputRequired()])
-
-
 class PasswordResetForm(FlaskForm):
     password = PasswordField('password',
                              validators=[InputRequired(),

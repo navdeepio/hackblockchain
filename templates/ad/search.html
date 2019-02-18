@@ -10,15 +10,14 @@
     <section class="bg hero">
         <div class="hero-head">
             <div class="container has-text-centered">
-                <a href="/">
-                    <img src="{{ url_for('static',
-                    filename='img/blockchain_logo.png') }}">
-                </a>
+              <a href="{{ url_for('index') }}">
+                  <img src="{{ url_for('static',
+                  filename='img/blockchain_logo.png') }}" />
+              </a>
             </div>
         </div>
 
         <form id="fullSearchForm" action="/job/search" method="get">
-          {{ form.csrf_token }}
             <div class="container" style="z-index:4">
                 <div class="columns is-centered is-mobile search-bar">
                     <div class="column is-11-mobile is-12-tablet is-10-desktop is-9-widescreen">
@@ -26,10 +25,7 @@
                             <div class="column is-12-mobile">
                                 <div class="field">
                                     <div class="control">
-                                        <!-- <input id="search" name="search" type="text" class="input is-large full-search full-search-input fsi-a icon-search" placeholder="Search for Jobs"> -->
-                                        {{ form.query(class='input is-large
-                                        full-search full-search-input fsi-a
-                                        icon-search', placeholder='Enter keywords like android, react etc') }}
+                                        <input name="q" type="text" class="input is-large full-search full-search-input fsi-a icon-search" placeholder="Search for Jobs">
                                     </div>
                                 </div>
                             </div>
@@ -37,13 +33,12 @@
                                 <div class="field">
                                     <div class="control">
                                         <div class="select is-large full-search full-search-dropdown icon-briefcase">
-                                            <!-- <select id="job_status" name="job_status" class="full-search-select"> -->
-                                            <!--     <option>Any</option> -->
-                                            <!--     <option>Full-time</option> -->
-                                            <!--     <option>Part-time</option> -->
-                                            <!-- </select> -->
-                                            {{
-                                            form.job_type(class='full-search-select') }}
+                                            <select name="job_type" class="full-search-select">
+                                                <option>Any</option>
+                                                <option>Full Time</option>
+                                                <option>Part Time</option>
+                                                <option>Contract</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -51,16 +46,15 @@
                             <div class="column is-6-mobile is-3-tablet is-desktop-2 is-widescreen-1">
                                 <div class="field">
                                     <div class="control">
-                                      {{ form.job_location(class='input
-                                      is-large full-search full-search-input
-                                      icon-location', placeholder='City') }}
-                                        <!-- <input id="job_location" name="job_location" type="text" class="input is-large full-search full-search-input icon-location" -->
-                                        <!--     type="text" placeholder="City"> -->
+                                        <input name="location" type="text" class="input is-large full-search full-search-input icon-location"
+                                            type="text" placeholder="City">
                                     </div>
                                 </div>
                             </div>
                             <div class="column is-12-mobile is-2-tablet is-desktop-2 is-widescreen-1 search-gap">
-                                <a onclick="fullSearchFunc()" class="button is-info is-large full-search full-search-button">SEARCH</a>
+                                <input type="submit" class="button is-info
+                                is-large full-search full-search-button"
+                                value="SEARCH">
                             </div>
                         </div>
                     </div>
@@ -73,7 +67,7 @@
 
     <!-- ELEMENT-1 LATEST JOB SECTION STARTS HERE -->
     <div class="container has-text-centered posting-label">
-        <h2>FOUND 5 JOBS</h2>
+      <h2>Found {{ ads|length }} jobs</h2>
     </div>
     <div class="container post-container section-full-height">
 

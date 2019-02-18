@@ -6,10 +6,11 @@ import os
 from flask_login import LoginManager, login_required, logout_user, \
     login_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from forms import LoginForm, RegistrationForm, CreateJobForm, JobSearchForm, \
+from forms import LoginForm, RegistrationForm, CreateJobForm, \
     ForgotEmailForm, PasswordResetForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from sqlalchemy import and_, cast, String
 
 if os.getenv('FLASK_ENV') == 'development':
     load_dotenv()
@@ -109,7 +110,6 @@ def show_job(job_id):
     return render_template('ad/job_detailed.html', ad=job)
 
 
-# TODO: testing
 # update an ad
 @app.route('/job/edit/<int:job_id>', methods=['GET', 'POST'])
 @login_required
@@ -162,21 +162,26 @@ def job_form_create():
     return render_template('ad/new.html', form=form)
 
 
-# TODO
 # search through the ads
 @app.route('/job/search', methods=['GET'])
 def job_search():
     try:
         q = request.args.get('q')
+        job_type = request.args.get('job_type')
+        location = request.args.get('location')
     except KeyError:
-        form = JobSearchForm()
-        return render_template('ad/search.html', form=form)
-    if q:
-        jobs = Job.query.filter()
-        return render_template('ad/search.html', jobs=jobs)
+        pass
+    if q or job_type or location:
+        q, location = q or '', location or ''
+        job_type = '' if job_type == 'Any' else job_type.split(' ')[0]
+        q, location, job_type = q.lower(), location.lower(), job_type.lower()
+        ads = Job.query.filter(
+            and_(Job.title.ilike('%{}%'.format(q)),
+                 cast(Job.job_type, String).ilike('%{}%'.format(job_type)),
+                 Job.job_location.ilike('%{}%'.format(location)))).all()
     else:
-        form = JobSearchForm()
-        return render_template('ad/search.html', form=form)
+        ads = Job.query.limit(5)
+    return render_template('ad/search.html', ads=ads)
 
 
 # delete ad
