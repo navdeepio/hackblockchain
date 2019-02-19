@@ -173,7 +173,10 @@ def job_search():
         pass
     if q or job_type or location:
         q, location = q or '', location or ''
-        job_type = '' if job_type == 'Any' else job_type.split(' ')[0]
+        if job_type == 'Any' or job_type is None:
+            job_type = ''
+        else:
+            job_type = job_type.split(' ')[0]
         q, location, job_type = q.lower(), location.lower(), job_type.lower()
         ads = Job.query.filter(
             and_(Job.title.ilike('%{}%'.format(q)),
