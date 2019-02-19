@@ -2,7 +2,7 @@ from sqlalchemy.ext.hybrid import hybrid_method
 from enum import Enum
 from flask_login import UserMixin
 from datetime import datetime, timedelta
-from app import db
+from .app import db
 import timeago
 
 

@@ -6,7 +6,7 @@ import os
 from flask_login import LoginManager, login_required, logout_user, \
     login_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from forms import LoginForm, RegistrationForm, CreateJobForm, \
+from .forms import LoginForm, RegistrationForm, CreateJobForm, \
     ForgotEmailForm, PasswordResetForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -29,7 +29,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'user_login'
 
 
-from models import User, Job
+from .models import User, Job
 
 # login manager callback
 @login_manager.user_loader
